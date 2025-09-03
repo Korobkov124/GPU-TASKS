@@ -1,5 +1,5 @@
-# GPU-TASKS
-# Korobkov Glushkov Berdin
+# GPU-TASKS  
+# Korobkov Glushkov Berdin  
 ## 1 Задание
 ### 1. Написать программу на языке CUDA C/C++, вычисляющую функцию от
 вещественных аргументов из нижеследующего списка в двух реализациях
