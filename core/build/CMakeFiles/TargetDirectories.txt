@@ -1,0 +1,3 @@
+D:/CUDA C++/GPU-TASKS/core/build/CMakeFiles/gpu_tasks.dir
+D:/CUDA C++/GPU-TASKS/core/build/CMakeFiles/ALL_BUILD.dir
+D:/CUDA C++/GPU-TASKS/core/build/CMakeFiles/ZERO_CHECK.dir

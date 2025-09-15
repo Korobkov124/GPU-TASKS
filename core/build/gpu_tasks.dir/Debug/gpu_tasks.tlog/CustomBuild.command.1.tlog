@@ -1,0 +1,10 @@
+^D:\CUDA C++\GPU-TASKS\CORE\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" "-SD:/CUDA C++/GPU-TASKS/core" "-BD:/CUDA C++/GPU-TASKS/core/build" --check-stamp-file "D:/CUDA C++/GPU-TASKS/core/build/CMakeFiles/generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
