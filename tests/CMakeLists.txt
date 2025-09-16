@@ -6,6 +6,10 @@ enable_testing()
 
 add_subdirectory(googletest)
 
-add_executable(test_addvect main.cpp)
+add_executable(test_addvect main.cu)
 
-target_link_libraries(test_addvect PUBLIC gpu_tasks gtest_main)
+target_include_directories(test_addvect PRIVATE
+    ${PROJECT_SOURCE_DIR}/сore/includes
+)
+
+target_link_libraries(test_addvect PRIVATE gpu_tasks gtest_main)

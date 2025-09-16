@@ -1,5 +1,5 @@
 #include <iostream>
-#include <gpu_addVect.cuh>
+#include "gpu_addVect.cuh"
 
 namespace AddVect{
 
@@ -27,12 +27,11 @@ namespace AddVect{
         cudaMemcpy(devVect2, vect2, sizeof(float) * N, cudaMemcpyHostToDevice);
         cudaMemcpy(devResult, resultVect, sizeof(float) * N, cudaMemcpyHostToDevice);
 
-        GpuAddVect <<< 1, N >>>(devVect2, devVect2, resultVect, N);
+        GpuAddVect <<< 1, N >>>(devVect1, devVect2, devResult, N);
 
-        cudaMemcpy(resultVect, devResult, sizeof(float), cudaMemcpyDeviceToHost);
-
+        cudaMemcpy(resultVect, devResult, sizeof(float) * N, cudaMemcpyDeviceToHost);
         
-        cudaFree(devVect2);
+        cudaFree(devVect1);
         cudaFree(devVect2);
         cudaFree(devResult);
         return resultVect;

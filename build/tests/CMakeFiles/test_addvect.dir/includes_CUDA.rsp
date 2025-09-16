@@ -1,0 +1,1 @@
+-I"/content/GPU-TASKS/tests/сore/includes" -I"/content/GPU-TASKS/core/includes" -isystem "/content/GPU-TASKS/tests/googletest/googletest/include" -isystem "/content/GPU-TASKS/tests/googletest/googletest"

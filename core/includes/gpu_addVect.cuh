@@ -3,7 +3,7 @@
 
 namespace AddVect{
 
-    static __global__ void GpuAddVect(float* vect1, float* vect2, float* resultVect, int N);
+    __global__ void GpuAddVect(float* vect1, float* vect2, float* resultVect, int N);
 
     class AddingVectors{
         public:
