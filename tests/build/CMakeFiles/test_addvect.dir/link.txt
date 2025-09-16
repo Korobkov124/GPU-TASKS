@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/test_addvect.dir/main.cpp.o -o test_addvect  -lgpu_tasks lib/libgtest_main.a lib/libgtest.a
