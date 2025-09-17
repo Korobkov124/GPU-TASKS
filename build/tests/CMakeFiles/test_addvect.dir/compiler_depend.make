@@ -32,6 +32,7 @@ tests/CMakeFiles/test_addvect.dir/main.cu.o: /content/GPU-TASKS/tests/main.cu \
   /usr/include/asm-generic/posix_types.h \
   /usr/include/asm-generic/types.h \
   /usr/include/assert.h \
+  /usr/include/c++/11/algorithm \
   /usr/include/c++/11/any \
   /usr/include/c++/11/array \
   /usr/include/c++/11/atomic \
@@ -92,11 +93,15 @@ tests/CMakeFiles/test_addvect.dir/main.cu.o: /content/GPU-TASKS/tests/main.cu \
   /usr/include/c++/11/bits/predefined_ops.h \
   /usr/include/c++/11/bits/ptr_traits.h \
   /usr/include/c++/11/bits/quoted_string.h \
+  /usr/include/c++/11/bits/random.h \
+  /usr/include/c++/11/bits/random.tcc \
   /usr/include/c++/11/bits/range_access.h \
+  /usr/include/c++/11/bits/ranges_algo.h \
   /usr/include/c++/11/bits/ranges_algobase.h \
   /usr/include/c++/11/bits/ranges_base.h \
   /usr/include/c++/11/bits/ranges_cmp.h \
   /usr/include/c++/11/bits/ranges_uninitialized.h \
+  /usr/include/c++/11/bits/ranges_util.h \
   /usr/include/c++/11/bits/refwrap.h \
   /usr/include/c++/11/bits/semaphore_base.h \
   /usr/include/c++/11/bits/shared_ptr.h \
@@ -120,6 +125,7 @@ tests/CMakeFiles/test_addvect.dir/main.cu.o: /content/GPU-TASKS/tests/main.cu \
   /usr/include/c++/11/bits/stl_map.h \
   /usr/include/c++/11/bits/stl_multimap.h \
   /usr/include/c++/11/bits/stl_multiset.h \
+  /usr/include/c++/11/bits/stl_numeric.h \
   /usr/include/c++/11/bits/stl_pair.h \
   /usr/include/c++/11/bits/stl_raw_storage_iter.h \
   /usr/include/c++/11/bits/stl_relops.h \
@@ -186,11 +192,15 @@ tests/CMakeFiles/test_addvect.dir/main.cu.o: /content/GPU-TASKS/tests/main.cu \
   /usr/include/c++/11/mutex \
   /usr/include/c++/11/new \
   /usr/include/c++/11/numbers \
+  /usr/include/c++/11/numeric \
   /usr/include/c++/11/optional \
   /usr/include/c++/11/ostream \
   /usr/include/c++/11/pstl/execution_defs.h \
+  /usr/include/c++/11/pstl/glue_algorithm_defs.h \
   /usr/include/c++/11/pstl/glue_memory_defs.h \
+  /usr/include/c++/11/pstl/glue_numeric_defs.h \
   /usr/include/c++/11/pstl/pstl_config.h \
+  /usr/include/c++/11/random \
   /usr/include/c++/11/ratio \
   /usr/include/c++/11/semaphore \
   /usr/include/c++/11/set \
@@ -389,6 +399,7 @@ tests/CMakeFiles/test_addvect.dir/main.cu.o: /content/GPU-TASKS/tests/main.cu \
   /usr/include/x86_64-linux-gnu/c++/11/bits/gthr-default.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/gthr.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/messages_members.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/opt_random.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/time_members.h \
   /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
@@ -605,10 +616,6 @@ tests/CMakeFiles/test_addvect.dir/main.cu.o: /content/GPU-TASKS/tests/main.cu \
 
 /usr/include/x86_64-linux-gnu/bits/stdlib.h:
 
-/usr/local/cuda/targets/x86_64-linux/include/sm_32_intrinsics.h:
-
-/usr/include/x86_64-linux-gnu/bits/stdlib-float.h:
-
 /usr/include/x86_64-linux-gnu/bits/timex.h:
 
 /usr/include/x86_64-linux-gnu/bits/stdio_lim.h:
@@ -669,8 +676,6 @@ tests/CMakeFiles/test_addvect.dir/main.cu.o: /content/GPU-TASKS/tests/main.cu \
 
 /usr/include/x86_64-linux-gnu/bits/long-double.h:
 
-/usr/include/x86_64-linux-gnu/bits/locale.h:
-
 /usr/include/x86_64-linux-gnu/bits/local_lim.h:
 
 /usr/include/x86_64-linux-gnu/bits/libc-header-start.h:
@@ -703,27 +708,23 @@ tests/CMakeFiles/test_addvect.dir/main.cu.o: /content/GPU-TASKS/tests/main.cu \
 
 /usr/include/x86_64-linux-gnu/bits/atomic_wide_counter.h:
 
-/usr/include/x86_64-linux-gnu/bits/struct_stat.h:
+/usr/include/x86_64-linux-gnu/asm/types.h:
 
-/usr/include/c++/11/bits/stl_set.h:
+/usr/include/x86_64-linux-gnu/bits/cpu-set.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/11/include/stddef.h:
+/usr/include/x86_64-linux-gnu/asm/posix_types_64.h:
 
-/usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h:
+/usr/local/cuda/targets/x86_64-linux/include/device_atomic_functions.h:
 
-/usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h:
+/usr/include/x86_64-linux-gnu/asm/errno.h:
 
-/usr/include/c++/11/string_view:
+/usr/include/wchar.h:
 
-/usr/include/c++/11/bits/stl_uninitialized.h:
+/usr/include/x86_64-linux-gnu/bits/setjmp.h:
 
-/usr/local/cuda/targets/x86_64-linux/include/channel_descriptor.h:
+/usr/include/x86_64-linux-gnu/bits/getopt_posix.h:
 
-/usr/include/c++/11/backward/auto_ptr.h:
-
-/usr/include/x86_64-linux-gnu/bits/struct_mutex.h:
-
-/usr/include/c++/11/bits/stl_iterator.h:
+/usr/include/time.h:
 
 /usr/include/c++/11/bits/locale_facets_nonio.tcc:
 
@@ -849,13 +850,13 @@ _deps/googletest-src/googletest/include/gtest/gtest-typed-test.h:
 
 /usr/include/c++/11/bits/istream.tcc:
 
-/usr/include/c++/11/bits/stl_relops.h:
-
-/usr/include/limits.h:
-
 /usr/include/c++/11/bits/locale_facets.h:
 
 /usr/include/c++/11/bits/exception.h:
+
+/usr/include/x86_64-linux-gnu/bits/locale.h:
+
+/usr/include/c++/11/pstl/glue_numeric_defs.h:
 
 /usr/local/cuda/targets/x86_64-linux/include/driver_functions.h:
 
@@ -879,13 +880,11 @@ _deps/googletest-src/googletest/include/gtest/gtest-typed-test.h:
 
 /content/GPU-TASKS/core/includes/gpu_addVect.cuh:
 
-/usr/local/cuda/targets/x86_64-linux/include/cuda_runtime_api.h:
+/usr/include/x86_64-linux-gnu/bits/struct_mutex.h:
 
-/usr/include/c++/11/cstddef:
+/usr/include/c++/11/bits/stl_iterator.h:
 
-/usr/include/c++/11/bits/stl_vector.h:
-
-/usr/include/c++/11/system_error:
+/usr/include/c++/11/bits/ranges_algo.h:
 
 _deps/googletest-src/googletest/include/gtest/internal/gtest-string.h:
 
@@ -894,6 +893,20 @@ _deps/googletest-src/googletest/include/gtest/internal/gtest-string.h:
 _deps/googletest-src/googletest/include/gtest/gtest-matchers.h:
 
 /usr/include/alloca.h:
+
+/usr/include/c++/11/algorithm:
+
+/usr/local/cuda/targets/x86_64-linux/include/device_types.h:
+
+/usr/include/x86_64-linux-gnu/asm/bitsperlong.h:
+
+/usr/include/c++/11/backward/binders.h:
+
+/usr/include/x86_64-linux-gnu/bits/fp-fast.h:
+
+/usr/include/c++/11/iostream:
+
+/usr/include/c++/11/bits/node_handle.h:
 
 /usr/include/c++/11/semaphore:
 
@@ -933,10 +946,6 @@ _deps/googletest-src/googletest/include/gtest/internal/gtest-param-util.h:
 
 /usr/include/c++/11/bits/locale_facets_nonio.h:
 
-/usr/include/c++/11/bits/stl_tempbuf.h:
-
-/usr/include/c++/11/bits/std_function.h:
-
 /usr/include/c++/11/pstl/pstl_config.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/struct_sched_param.h:
@@ -948,6 +957,14 @@ _deps/googletest-src/googletest/include/gtest/internal/gtest-param-util.h:
 /content/GPU-TASKS/tests/main.cu:
 
 /usr/include/linux/posix_types.h:
+
+/usr/include/c++/11/numeric:
+
+/usr/include/x86_64-linux-gnu/asm/posix_types.h:
+
+/usr/include/c++/11/bits/ranges_util.h:
+
+/usr/include/c++/11/limits:
 
 /usr/include/x86_64-linux-gnu/bits/typesizes.h:
 
@@ -971,11 +988,29 @@ _deps/googletest-src/googletest/include/gtest/internal/gtest-internal.h:
 
 /usr/include/asm-generic/posix_types.h:
 
+/usr/local/cuda/targets/x86_64-linux/include/sm_32_intrinsics.h:
+
+/usr/include/x86_64-linux-gnu/bits/stdlib-float.h:
+
+/usr/include/c++/11/bits/random.tcc:
+
+/usr/include/wctype.h:
+
+/usr/include/sched.h:
+
 _deps/googletest-src/googletest/include/gtest/internal/gtest-filepath.h:
 
 /usr/include/c++/11/condition_variable:
 
 /usr/include/c++/11/ratio:
+
+/usr/include/c++/11/bits/stl_numeric.h:
+
+/usr/local/cuda/targets/x86_64-linux/include/channel_descriptor.h:
+
+/usr/include/c++/11/backward/auto_ptr.h:
+
+/usr/include/c++/11/bits/stl_uninitialized.h:
 
 /usr/include/c++/11/bits/atomic_lockfree_defines.h:
 
@@ -1015,10 +1050,6 @@ _deps/googletest-src/googletest/include/gtest/gtest-param-test.h:
 
 /usr/include/c++/11/bits/char_traits.h:
 
-/usr/include/x86_64-linux-gnu/bits/cpu-set.h:
-
-/usr/include/x86_64-linux-gnu/asm/posix_types_64.h:
-
 /usr/include/x86_64-linux-gnu/bits/mathcalls.h:
 
 _deps/googletest-src/googletest/include/gtest/gtest_pred_impl.h:
@@ -1030,8 +1061,6 @@ _deps/googletest-src/googletest/include/gtest/gtest_pred_impl.h:
 /usr/include/c++/11/bits/basic_ios.h:
 
 /usr/include/c++/11/bits/uniform_int_dist.h:
-
-/usr/include/wchar.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/struct___jmp_buf_tag.h:
 
@@ -1061,12 +1090,6 @@ _deps/googletest-src/googletest/include/gtest/internal/gtest-type-util.h:
 
 /usr/include/c++/11/ext/numeric_traits.h:
 
-/usr/include/x86_64-linux-gnu/bits/fp-fast.h:
-
-/usr/include/c++/11/bits/node_handle.h:
-
-/usr/include/c++/11/iostream:
-
 /usr/include/c++/11/bits/max_size_type.h:
 
 /usr/include/c++/11/bits/align.h:
@@ -1074,16 +1097,6 @@ _deps/googletest-src/googletest/include/gtest/internal/gtest-type-util.h:
 _deps/googletest-src/googletest/include/gtest/internal/gtest-port-arch.h:
 
 /usr/include/c++/11/vector:
-
-/usr/include/syscall.h:
-
-/usr/include/c++/11/bits/stl_tree.h:
-
-/usr/include/c++/11/tuple:
-
-/usr/include/x86_64-linux-gnu/sys/single_threaded.h:
-
-/usr/include/c++/11/type_traits:
 
 /usr/local/cuda/targets/x86_64-linux/include/driver_types.h:
 
@@ -1101,6 +1114,12 @@ _deps/googletest-src/googletest/include/gtest/gtest-message.h:
 
 /usr/include/c++/11/bits/charconv.h:
 
+/usr/include/x86_64-linux-gnu/bits/statx.h:
+
+/usr/include/unistd.h:
+
+/usr/include/c++/11/bits/stl_algobase.h:
+
 /usr/include/x86_64-linux-gnu/bits/select2.h:
 
 /usr/include/c++/11/cwchar:
@@ -1108,6 +1127,8 @@ _deps/googletest-src/googletest/include/gtest/gtest-message.h:
 /usr/local/cuda/targets/x86_64-linux/include/crt/cudacc_ext.h:
 
 /usr/include/c++/11/bits/basic_string.tcc:
+
+/usr/include/x86_64-linux-gnu/c++/11/bits/opt_random.h:
 
 /usr/include/c++/11/bits/basic_ios.tcc:
 
@@ -1139,6 +1160,8 @@ _deps/googletest-src/googletest/include/gtest/gtest-message.h:
 
 /usr/include/pthread.h:
 
+/usr/include/c++/11/bits/random.h:
+
 /usr/local/cuda/targets/x86_64-linux/include/crt/sm_90_rt.h:
 
 /usr/include/c++/11/bits/cxxabi_forced.h:
@@ -1146,6 +1169,44 @@ _deps/googletest-src/googletest/include/gtest/gtest-message.h:
 /usr/include/x86_64-linux-gnu/bits/sched.h:
 
 /usr/include/c++/11/ext/alloc_traits.h:
+
+/usr/include/limits.h:
+
+/usr/include/c++/11/bits/stl_relops.h:
+
+/usr/include/x86_64-linux-gnu/bits/struct_stat.h:
+
+/usr/include/c++/11/bits/stl_set.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/11/include/stddef.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h:
+
+/usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h:
+
+/usr/include/c++/11/string_view:
+
+/usr/include/c++/11/bits/std_function.h:
+
+/usr/include/c++/11/bits/stl_tempbuf.h:
+
+/usr/include/syscall.h:
+
+/usr/include/c++/11/bits/stl_tree.h:
+
+/usr/include/c++/11/tuple:
+
+/usr/include/x86_64-linux-gnu/sys/single_threaded.h:
+
+/usr/include/c++/11/type_traits:
+
+/usr/local/cuda/targets/x86_64-linux/include/cuda_runtime_api.h:
+
+/usr/include/c++/11/cstddef:
+
+/usr/include/c++/11/bits/stl_vector.h:
+
+/usr/include/c++/11/system_error:
 
 _deps/googletest-src/googletest/include/gtest/internal/gtest-death-test-internal.h:
 
@@ -1211,8 +1272,6 @@ _deps/googletest-src/googletest/include/gtest/internal/gtest-death-test-internal
 
 /usr/include/c++/11/cwctype:
 
-/usr/include/x86_64-linux-gnu/asm/types.h:
-
 /usr/include/x86_64-linux-gnu/c++/11/bits/messages_members.h:
 
 /usr/include/c++/11/cxxabi.h:
@@ -1251,8 +1310,6 @@ _deps/googletest-src/googletest/include/gtest/internal/gtest-death-test-internal
 
 /usr/include/c++/11/istream:
 
-/usr/include/c++/11/limits:
-
 /usr/include/ctype.h:
 
 /usr/include/c++/11/locale:
@@ -1271,11 +1328,15 @@ _deps/googletest-src/googletest/include/gtest/internal/gtest-death-test-internal
 
 /usr/include/c++/11/pstl/execution_defs.h:
 
+/usr/include/c++/11/random:
+
 /usr/include/x86_64-linux-gnu/asm/unistd_64.h:
 
 /usr/include/c++/11/sstream:
 
 _deps/googletest-src/googletest/include/gtest/gtest.h:
+
+/usr/include/c++/11/pstl/glue_algorithm_defs.h:
 
 /usr/include/c++/11/stdexcept:
 
@@ -1337,12 +1398,6 @@ _deps/googletest-src/googletest/include/gtest/gtest.h:
 
 /usr/include/locale.h:
 
-/usr/local/cuda/targets/x86_64-linux/include/device_types.h:
-
-/usr/include/c++/11/backward/binders.h:
-
-/usr/include/x86_64-linux-gnu/asm/bitsperlong.h:
-
 /usr/include/strings.h:
 
 /usr/include/signal.h:
@@ -1354,25 +1409,3 @@ _deps/googletest-src/googletest/include/gtest/gtest.h:
 /usr/include/c++/11/bits/streambuf.tcc:
 
 /usr/include/string.h:
-
-/usr/include/x86_64-linux-gnu/bits/setjmp.h:
-
-/usr/include/x86_64-linux-gnu/bits/getopt_posix.h:
-
-/usr/include/time.h:
-
-/usr/include/x86_64-linux-gnu/bits/statx.h:
-
-/usr/include/c++/11/bits/stl_algobase.h:
-
-/usr/include/unistd.h:
-
-/usr/include/sched.h:
-
-/usr/include/wctype.h:
-
-/usr/local/cuda/targets/x86_64-linux/include/device_atomic_functions.h:
-
-/usr/include/x86_64-linux-gnu/asm/errno.h:
-
-/usr/include/x86_64-linux-gnu/asm/posix_types.h:
