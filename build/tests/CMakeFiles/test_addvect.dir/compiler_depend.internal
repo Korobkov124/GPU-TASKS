@@ -3,28 +3,28 @@
 
 tests/CMakeFiles/test_addvect.dir/main.cu.o
  /content/GPU-TASKS/tests/main.cu
+ /content/GPU-TASKS/build/_deps/googletest-src/googletest/include/gtest/gtest-assertion-result.h
+ /content/GPU-TASKS/build/_deps/googletest-src/googletest/include/gtest/gtest-death-test.h
+ /content/GPU-TASKS/build/_deps/googletest-src/googletest/include/gtest/gtest-matchers.h
+ /content/GPU-TASKS/build/_deps/googletest-src/googletest/include/gtest/gtest-message.h
+ /content/GPU-TASKS/build/_deps/googletest-src/googletest/include/gtest/gtest-param-test.h
+ /content/GPU-TASKS/build/_deps/googletest-src/googletest/include/gtest/gtest-printers.h
+ /content/GPU-TASKS/build/_deps/googletest-src/googletest/include/gtest/gtest-test-part.h
+ /content/GPU-TASKS/build/_deps/googletest-src/googletest/include/gtest/gtest-typed-test.h
+ /content/GPU-TASKS/build/_deps/googletest-src/googletest/include/gtest/gtest.h
+ /content/GPU-TASKS/build/_deps/googletest-src/googletest/include/gtest/gtest_pred_impl.h
+ /content/GPU-TASKS/build/_deps/googletest-src/googletest/include/gtest/gtest_prod.h
+ /content/GPU-TASKS/build/_deps/googletest-src/googletest/include/gtest/internal/custom/gtest-port.h
+ /content/GPU-TASKS/build/_deps/googletest-src/googletest/include/gtest/internal/custom/gtest-printers.h
+ /content/GPU-TASKS/build/_deps/googletest-src/googletest/include/gtest/internal/gtest-death-test-internal.h
+ /content/GPU-TASKS/build/_deps/googletest-src/googletest/include/gtest/internal/gtest-filepath.h
+ /content/GPU-TASKS/build/_deps/googletest-src/googletest/include/gtest/internal/gtest-internal.h
+ /content/GPU-TASKS/build/_deps/googletest-src/googletest/include/gtest/internal/gtest-param-util.h
+ /content/GPU-TASKS/build/_deps/googletest-src/googletest/include/gtest/internal/gtest-port-arch.h
+ /content/GPU-TASKS/build/_deps/googletest-src/googletest/include/gtest/internal/gtest-port.h
+ /content/GPU-TASKS/build/_deps/googletest-src/googletest/include/gtest/internal/gtest-string.h
+ /content/GPU-TASKS/build/_deps/googletest-src/googletest/include/gtest/internal/gtest-type-util.h
  /content/GPU-TASKS/core/includes/gpu_addVect.cuh
- /content/GPU-TASKS/tests/googletest/googletest/include/gtest/gtest-assertion-result.h
- /content/GPU-TASKS/tests/googletest/googletest/include/gtest/gtest-death-test.h
- /content/GPU-TASKS/tests/googletest/googletest/include/gtest/gtest-matchers.h
- /content/GPU-TASKS/tests/googletest/googletest/include/gtest/gtest-message.h
- /content/GPU-TASKS/tests/googletest/googletest/include/gtest/gtest-param-test.h
- /content/GPU-TASKS/tests/googletest/googletest/include/gtest/gtest-printers.h
- /content/GPU-TASKS/tests/googletest/googletest/include/gtest/gtest-test-part.h
- /content/GPU-TASKS/tests/googletest/googletest/include/gtest/gtest-typed-test.h
- /content/GPU-TASKS/tests/googletest/googletest/include/gtest/gtest.h
- /content/GPU-TASKS/tests/googletest/googletest/include/gtest/gtest_pred_impl.h
- /content/GPU-TASKS/tests/googletest/googletest/include/gtest/gtest_prod.h
- /content/GPU-TASKS/tests/googletest/googletest/include/gtest/internal/custom/gtest-port.h
- /content/GPU-TASKS/tests/googletest/googletest/include/gtest/internal/custom/gtest-printers.h
- /content/GPU-TASKS/tests/googletest/googletest/include/gtest/internal/gtest-death-test-internal.h
- /content/GPU-TASKS/tests/googletest/googletest/include/gtest/internal/gtest-filepath.h
- /content/GPU-TASKS/tests/googletest/googletest/include/gtest/internal/gtest-internal.h
- /content/GPU-TASKS/tests/googletest/googletest/include/gtest/internal/gtest-param-util.h
- /content/GPU-TASKS/tests/googletest/googletest/include/gtest/internal/gtest-port-arch.h
- /content/GPU-TASKS/tests/googletest/googletest/include/gtest/internal/gtest-port.h
- /content/GPU-TASKS/tests/googletest/googletest/include/gtest/internal/gtest-string.h
- /content/GPU-TASKS/tests/googletest/googletest/include/gtest/internal/gtest-type-util.h
  /usr/include/alloca.h
  /usr/include/asm-generic/bitsperlong.h
  /usr/include/asm-generic/errno-base.h
@@ -33,7 +33,6 @@ tests/CMakeFiles/test_addvect.dir/main.cu.o
  /usr/include/asm-generic/posix_types.h
  /usr/include/asm-generic/types.h
  /usr/include/assert.h
- /usr/include/c++/11/algorithm
  /usr/include/c++/11/any
  /usr/include/c++/11/array
  /usr/include/c++/11/atomic
@@ -47,6 +46,8 @@ tests/CMakeFiles/test_addvect.dir/main.cu.o
  /usr/include/c++/11/bits/allocator.h
  /usr/include/c++/11/bits/atomic_base.h
  /usr/include/c++/11/bits/atomic_lockfree_defines.h
+ /usr/include/c++/11/bits/atomic_timed_wait.h
+ /usr/include/c++/11/bits/atomic_wait.h
  /usr/include/c++/11/bits/basic_ios.h
  /usr/include/c++/11/bits/basic_ios.tcc
  /usr/include/c++/11/bits/basic_string.h
@@ -71,6 +72,7 @@ tests/CMakeFiles/test_addvect.dir/main.cu.o
  /usr/include/c++/11/bits/invoke.h
  /usr/include/c++/11/bits/ios_base.h
  /usr/include/c++/11/bits/istream.tcc
+ /usr/include/c++/11/bits/iterator_concepts.h
  /usr/include/c++/11/bits/locale_classes.h
  /usr/include/c++/11/bits/locale_classes.tcc
  /usr/include/c++/11/bits/locale_conv.h
@@ -79,6 +81,7 @@ tests/CMakeFiles/test_addvect.dir/main.cu.o
  /usr/include/c++/11/bits/locale_facets_nonio.h
  /usr/include/c++/11/bits/locale_facets_nonio.tcc
  /usr/include/c++/11/bits/localefwd.h
+ /usr/include/c++/11/bits/max_size_type.h
  /usr/include/c++/11/bits/memoryfwd.h
  /usr/include/c++/11/bits/move.h
  /usr/include/c++/11/bits/nested_exception.h
@@ -89,10 +92,14 @@ tests/CMakeFiles/test_addvect.dir/main.cu.o
  /usr/include/c++/11/bits/postypes.h
  /usr/include/c++/11/bits/predefined_ops.h
  /usr/include/c++/11/bits/ptr_traits.h
- /usr/include/c++/11/bits/random.h
- /usr/include/c++/11/bits/random.tcc
+ /usr/include/c++/11/bits/quoted_string.h
  /usr/include/c++/11/bits/range_access.h
+ /usr/include/c++/11/bits/ranges_algobase.h
+ /usr/include/c++/11/bits/ranges_base.h
+ /usr/include/c++/11/bits/ranges_cmp.h
+ /usr/include/c++/11/bits/ranges_uninitialized.h
  /usr/include/c++/11/bits/refwrap.h
+ /usr/include/c++/11/bits/semaphore_base.h
  /usr/include/c++/11/bits/shared_ptr.h
  /usr/include/c++/11/bits/shared_ptr_atomic.h
  /usr/include/c++/11/bits/shared_ptr_base.h
@@ -101,6 +108,7 @@ tests/CMakeFiles/test_addvect.dir/main.cu.o
  /usr/include/c++/11/bits/std_abs.h
  /usr/include/c++/11/bits/std_function.h
  /usr/include/c++/11/bits/std_mutex.h
+ /usr/include/c++/11/bits/std_thread.h
  /usr/include/c++/11/bits/stl_algo.h
  /usr/include/c++/11/bits/stl_algobase.h
  /usr/include/c++/11/bits/stl_bvector.h
@@ -113,7 +121,6 @@ tests/CMakeFiles/test_addvect.dir/main.cu.o
  /usr/include/c++/11/bits/stl_map.h
  /usr/include/c++/11/bits/stl_multimap.h
  /usr/include/c++/11/bits/stl_multiset.h
- /usr/include/c++/11/bits/stl_numeric.h
  /usr/include/c++/11/bits/stl_pair.h
  /usr/include/c++/11/bits/stl_raw_storage_iter.h
  /usr/include/c++/11/bits/stl_relops.h
@@ -127,18 +134,23 @@ tests/CMakeFiles/test_addvect.dir/main.cu.o
  /usr/include/c++/11/bits/streambuf_iterator.h
  /usr/include/c++/11/bits/string_view.tcc
  /usr/include/c++/11/bits/stringfwd.h
+ /usr/include/c++/11/bits/this_thread_sleep.h
  /usr/include/c++/11/bits/uniform_int_dist.h
  /usr/include/c++/11/bits/unique_lock.h
  /usr/include/c++/11/bits/unique_ptr.h
  /usr/include/c++/11/bits/unordered_map.h
  /usr/include/c++/11/bits/uses_allocator.h
+ /usr/include/c++/11/bits/uses_allocator_args.h
  /usr/include/c++/11/bits/vector.tcc
  /usr/include/c++/11/cassert
  /usr/include/c++/11/cctype
  /usr/include/c++/11/cerrno
  /usr/include/c++/11/chrono
+ /usr/include/c++/11/climits
  /usr/include/c++/11/clocale
  /usr/include/c++/11/cmath
+ /usr/include/c++/11/compare
+ /usr/include/c++/11/concepts
  /usr/include/c++/11/condition_variable
  /usr/include/c++/11/cstddef
  /usr/include/c++/11/cstdint
@@ -161,6 +173,7 @@ tests/CMakeFiles/test_addvect.dir/main.cu.o
  /usr/include/c++/11/ext/type_traits.h
  /usr/include/c++/11/functional
  /usr/include/c++/11/initializer_list
+ /usr/include/c++/11/iomanip
  /usr/include/c++/11/ios
  /usr/include/c++/11/iosfwd
  /usr/include/c++/11/iostream
@@ -173,20 +186,19 @@ tests/CMakeFiles/test_addvect.dir/main.cu.o
  /usr/include/c++/11/memory
  /usr/include/c++/11/mutex
  /usr/include/c++/11/new
- /usr/include/c++/11/numeric
+ /usr/include/c++/11/numbers
  /usr/include/c++/11/optional
  /usr/include/c++/11/ostream
  /usr/include/c++/11/pstl/execution_defs.h
- /usr/include/c++/11/pstl/glue_algorithm_defs.h
  /usr/include/c++/11/pstl/glue_memory_defs.h
- /usr/include/c++/11/pstl/glue_numeric_defs.h
  /usr/include/c++/11/pstl/pstl_config.h
- /usr/include/c++/11/random
  /usr/include/c++/11/ratio
+ /usr/include/c++/11/semaphore
  /usr/include/c++/11/set
  /usr/include/c++/11/sstream
  /usr/include/c++/11/stdexcept
  /usr/include/c++/11/stdlib.h
+ /usr/include/c++/11/stop_token
  /usr/include/c++/11/streambuf
  /usr/include/c++/11/string
  /usr/include/c++/11/string_view
@@ -210,7 +222,6 @@ tests/CMakeFiles/test_addvect.dir/main.cu.o
  /usr/include/c++/11/utility
  /usr/include/c++/11/variant
  /usr/include/c++/11/vector
- /usr/include/c++/11/version
  /usr/include/ctype.h
  /usr/include/endian.h
  /usr/include/errno.h
@@ -230,6 +241,7 @@ tests/CMakeFiles/test_addvect.dir/main.cu.o
  /usr/include/pthread.h
  /usr/include/regex.h
  /usr/include/sched.h
+ /usr/include/semaphore.h
  /usr/include/signal.h
  /usr/include/stdc-predef.h
  /usr/include/stdint.h
@@ -237,6 +249,7 @@ tests/CMakeFiles/test_addvect.dir/main.cu.o
  /usr/include/stdlib.h
  /usr/include/string.h
  /usr/include/strings.h
+ /usr/include/syscall.h
  /usr/include/time.h
  /usr/include/unistd.h
  /usr/include/wchar.h
@@ -246,6 +259,8 @@ tests/CMakeFiles/test_addvect.dir/main.cu.o
  /usr/include/x86_64-linux-gnu/asm/posix_types.h
  /usr/include/x86_64-linux-gnu/asm/posix_types_64.h
  /usr/include/x86_64-linux-gnu/asm/types.h
+ /usr/include/x86_64-linux-gnu/asm/unistd.h
+ /usr/include/x86_64-linux-gnu/asm/unistd_64.h
  /usr/include/x86_64-linux-gnu/bits/atomic_wide_counter.h
  /usr/include/x86_64-linux-gnu/bits/byteswap.h
  /usr/include/x86_64-linux-gnu/bits/confname.h
@@ -279,6 +294,8 @@ tests/CMakeFiles/test_addvect.dir/main.cu.o
  /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h
  /usr/include/x86_64-linux-gnu/bits/sched.h
  /usr/include/x86_64-linux-gnu/bits/select.h
+ /usr/include/x86_64-linux-gnu/bits/select2.h
+ /usr/include/x86_64-linux-gnu/bits/semaphore.h
  /usr/include/x86_64-linux-gnu/bits/setjmp.h
  /usr/include/x86_64-linux-gnu/bits/sigaction.h
  /usr/include/x86_64-linux-gnu/bits/sigcontext.h
@@ -298,11 +315,18 @@ tests/CMakeFiles/test_addvect.dir/main.cu.o
  /usr/include/x86_64-linux-gnu/bits/statx.h
  /usr/include/x86_64-linux-gnu/bits/stdint-intn.h
  /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h
+ /usr/include/x86_64-linux-gnu/bits/stdio.h
+ /usr/include/x86_64-linux-gnu/bits/stdio2.h
  /usr/include/x86_64-linux-gnu/bits/stdio_lim.h
+ /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h
  /usr/include/x86_64-linux-gnu/bits/stdlib-float.h
+ /usr/include/x86_64-linux-gnu/bits/stdlib.h
+ /usr/include/x86_64-linux-gnu/bits/string_fortified.h
+ /usr/include/x86_64-linux-gnu/bits/strings_fortified.h
  /usr/include/x86_64-linux-gnu/bits/struct_mutex.h
  /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h
  /usr/include/x86_64-linux-gnu/bits/struct_stat.h
+ /usr/include/x86_64-linux-gnu/bits/syscall.h
  /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h
  /usr/include/x86_64-linux-gnu/bits/time.h
  /usr/include/x86_64-linux-gnu/bits/time64.h
@@ -345,10 +369,12 @@ tests/CMakeFiles/test_addvect.dir/main.cu.o
  /usr/include/x86_64-linux-gnu/bits/typesizes.h
  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h
  /usr/include/x86_64-linux-gnu/bits/uio_lim.h
+ /usr/include/x86_64-linux-gnu/bits/unistd.h
  /usr/include/x86_64-linux-gnu/bits/unistd_ext.h
  /usr/include/x86_64-linux-gnu/bits/waitflags.h
  /usr/include/x86_64-linux-gnu/bits/waitstatus.h
  /usr/include/x86_64-linux-gnu/bits/wchar.h
+ /usr/include/x86_64-linux-gnu/bits/wchar2.h
  /usr/include/x86_64-linux-gnu/bits/wctype-wchar.h
  /usr/include/x86_64-linux-gnu/bits/wordsize.h
  /usr/include/x86_64-linux-gnu/bits/xopen_lim.h
@@ -364,7 +390,6 @@ tests/CMakeFiles/test_addvect.dir/main.cu.o
  /usr/include/x86_64-linux-gnu/c++/11/bits/gthr-default.h
  /usr/include/x86_64-linux-gnu/c++/11/bits/gthr.h
  /usr/include/x86_64-linux-gnu/c++/11/bits/messages_members.h
- /usr/include/x86_64-linux-gnu/c++/11/bits/opt_random.h
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h
  /usr/include/x86_64-linux-gnu/c++/11/bits/time_members.h
  /usr/include/x86_64-linux-gnu/gnu/stubs-64.h
@@ -373,6 +398,8 @@ tests/CMakeFiles/test_addvect.dir/main.cu.o
  /usr/include/x86_64-linux-gnu/sys/select.h
  /usr/include/x86_64-linux-gnu/sys/single_threaded.h
  /usr/include/x86_64-linux-gnu/sys/stat.h
+ /usr/include/x86_64-linux-gnu/sys/syscall.h
+ /usr/include/x86_64-linux-gnu/sys/time.h
  /usr/include/x86_64-linux-gnu/sys/types.h
  /usr/include/x86_64-linux-gnu/sys/ucontext.h
  /usr/include/x86_64-linux-gnu/sys/wait.h

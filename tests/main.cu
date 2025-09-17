@@ -1,4 +1,4 @@
-#include "googletest/googletest/include/gtest/gtest.h"
+#include <gtest/gtest.h>
 #include <vector>
 #include <random>
 #include <algorithm>
@@ -21,22 +21,21 @@ TEST(AddVectTest, CpuVsGpuAccuracy) {
 
     AddVect::AddingVectors::RunGpu(a.data(), b.data(), gpu_res.data(), N);
 
-    for (int i = 0; i < N; ++i){
-      std::cout << gpu_res[i];
-    }
     const float abs_error = 1e-6f;
 
     float max_diff = 0.0f;
     for (int i = 0; i < N; ++i) {
         float d = std::fabs(cpu_res[i] - gpu_res[i]);
-        
-        ASSERT_NEAR(cpu_res[i], gpu_res[i], abs_error);
-
         if (d > max_diff) max_diff = d;
     }
 
-    std::cout << "Max: " << max_diff;
+    ASSERT_LE(max_diff, abs_error) << "Max absolute difference (" << max_diff << ") exceeds abs_error " << abs_error;
+
+    std::cout << "Metrics test complete successfull!\n";
 }
+
+
+
 
 int main(int argc, char **argv)
 {

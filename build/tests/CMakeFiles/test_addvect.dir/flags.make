@@ -6,5 +6,5 @@ CUDA_DEFINES =
 
 CUDA_INCLUDES = --options-file CMakeFiles/test_addvect.dir/includes_CUDA.rsp
 
-CUDA_FLAGS = -std=c++17 "--generate-code=arch=compute_52,code=[compute_52,sm_52]"
+CUDA_FLAGS = -std=c++20 "--generate-code=arch=compute_52,code=[compute_52,sm_52]" -Wall -O3
 

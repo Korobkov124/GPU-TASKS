@@ -6,5 +6,5 @@ CUDA_DEFINES = -Dgpu_tasks_EXPORTS
 
 CUDA_INCLUDES = --options-file CMakeFiles/gpu_tasks.dir/includes_CUDA.rsp
 
-CUDA_FLAGS = -std=c++17 "--generate-code=arch=compute_52,code=[compute_52,sm_52]" -Xcompiler=-fPIC
+CUDA_FLAGS = -std=c++17 "--generate-code=arch=compute_75,code=[compute_75,sm_75]" -Xcompiler=-fPIC
 

@@ -83,6 +83,72 @@ clean: tests/clean
 .PHONY : clean
 
 #=============================================================================
+# Directory level rules for directory _deps/googletest-build
+
+# Recursive "all" directory target.
+_deps/googletest-build/all: _deps/googletest-build/googlemock/all
+.PHONY : _deps/googletest-build/all
+
+# Recursive "codegen" directory target.
+_deps/googletest-build/codegen: _deps/googletest-build/googlemock/codegen
+.PHONY : _deps/googletest-build/codegen
+
+# Recursive "preinstall" directory target.
+_deps/googletest-build/preinstall: _deps/googletest-build/googlemock/preinstall
+.PHONY : _deps/googletest-build/preinstall
+
+# Recursive "clean" directory target.
+_deps/googletest-build/clean: _deps/googletest-build/googlemock/clean
+.PHONY : _deps/googletest-build/clean
+
+#=============================================================================
+# Directory level rules for directory _deps/googletest-build/googlemock
+
+# Recursive "all" directory target.
+_deps/googletest-build/googlemock/all: _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/all
+_deps/googletest-build/googlemock/all: _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/all
+_deps/googletest-build/googlemock/all: _deps/googletest-build/googletest/all
+.PHONY : _deps/googletest-build/googlemock/all
+
+# Recursive "codegen" directory target.
+_deps/googletest-build/googlemock/codegen: _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/codegen
+_deps/googletest-build/googlemock/codegen: _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/codegen
+_deps/googletest-build/googlemock/codegen: _deps/googletest-build/googletest/codegen
+.PHONY : _deps/googletest-build/googlemock/codegen
+
+# Recursive "preinstall" directory target.
+_deps/googletest-build/googlemock/preinstall: _deps/googletest-build/googletest/preinstall
+.PHONY : _deps/googletest-build/googlemock/preinstall
+
+# Recursive "clean" directory target.
+_deps/googletest-build/googlemock/clean: _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/clean
+_deps/googletest-build/googlemock/clean: _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/clean
+_deps/googletest-build/googlemock/clean: _deps/googletest-build/googletest/clean
+.PHONY : _deps/googletest-build/googlemock/clean
+
+#=============================================================================
+# Directory level rules for directory _deps/googletest-build/googletest
+
+# Recursive "all" directory target.
+_deps/googletest-build/googletest/all: _deps/googletest-build/googletest/CMakeFiles/gtest.dir/all
+_deps/googletest-build/googletest/all: _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/all
+.PHONY : _deps/googletest-build/googletest/all
+
+# Recursive "codegen" directory target.
+_deps/googletest-build/googletest/codegen: _deps/googletest-build/googletest/CMakeFiles/gtest.dir/codegen
+_deps/googletest-build/googletest/codegen: _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/codegen
+.PHONY : _deps/googletest-build/googletest/codegen
+
+# Recursive "preinstall" directory target.
+_deps/googletest-build/googletest/preinstall:
+.PHONY : _deps/googletest-build/googletest/preinstall
+
+# Recursive "clean" directory target.
+_deps/googletest-build/googletest/clean: _deps/googletest-build/googletest/CMakeFiles/gtest.dir/clean
+_deps/googletest-build/googletest/clean: _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/clean
+.PHONY : _deps/googletest-build/googletest/clean
+
+#=============================================================================
 # Directory level rules for directory core
 
 # Recursive "all" directory target.
@@ -106,88 +172,22 @@ core/clean: core/CMakeFiles/gpu_tasks.dir/clean
 
 # Recursive "all" directory target.
 tests/all: tests/CMakeFiles/test_addvect.dir/all
-tests/all: tests/googletest/all
+tests/all: _deps/googletest-build/all
 .PHONY : tests/all
 
 # Recursive "codegen" directory target.
 tests/codegen: tests/CMakeFiles/test_addvect.dir/codegen
-tests/codegen: tests/googletest/codegen
+tests/codegen: _deps/googletest-build/codegen
 .PHONY : tests/codegen
 
 # Recursive "preinstall" directory target.
-tests/preinstall: tests/googletest/preinstall
+tests/preinstall: _deps/googletest-build/preinstall
 .PHONY : tests/preinstall
 
 # Recursive "clean" directory target.
 tests/clean: tests/CMakeFiles/test_addvect.dir/clean
-tests/clean: tests/googletest/clean
+tests/clean: _deps/googletest-build/clean
 .PHONY : tests/clean
-
-#=============================================================================
-# Directory level rules for directory tests/googletest
-
-# Recursive "all" directory target.
-tests/googletest/all: tests/googletest/googlemock/all
-.PHONY : tests/googletest/all
-
-# Recursive "codegen" directory target.
-tests/googletest/codegen: tests/googletest/googlemock/codegen
-.PHONY : tests/googletest/codegen
-
-# Recursive "preinstall" directory target.
-tests/googletest/preinstall: tests/googletest/googlemock/preinstall
-.PHONY : tests/googletest/preinstall
-
-# Recursive "clean" directory target.
-tests/googletest/clean: tests/googletest/googlemock/clean
-.PHONY : tests/googletest/clean
-
-#=============================================================================
-# Directory level rules for directory tests/googletest/googlemock
-
-# Recursive "all" directory target.
-tests/googletest/googlemock/all: tests/googletest/googlemock/CMakeFiles/gmock.dir/all
-tests/googletest/googlemock/all: tests/googletest/googlemock/CMakeFiles/gmock_main.dir/all
-tests/googletest/googlemock/all: tests/googletest/googletest/all
-.PHONY : tests/googletest/googlemock/all
-
-# Recursive "codegen" directory target.
-tests/googletest/googlemock/codegen: tests/googletest/googlemock/CMakeFiles/gmock.dir/codegen
-tests/googletest/googlemock/codegen: tests/googletest/googlemock/CMakeFiles/gmock_main.dir/codegen
-tests/googletest/googlemock/codegen: tests/googletest/googletest/codegen
-.PHONY : tests/googletest/googlemock/codegen
-
-# Recursive "preinstall" directory target.
-tests/googletest/googlemock/preinstall: tests/googletest/googletest/preinstall
-.PHONY : tests/googletest/googlemock/preinstall
-
-# Recursive "clean" directory target.
-tests/googletest/googlemock/clean: tests/googletest/googlemock/CMakeFiles/gmock.dir/clean
-tests/googletest/googlemock/clean: tests/googletest/googlemock/CMakeFiles/gmock_main.dir/clean
-tests/googletest/googlemock/clean: tests/googletest/googletest/clean
-.PHONY : tests/googletest/googlemock/clean
-
-#=============================================================================
-# Directory level rules for directory tests/googletest/googletest
-
-# Recursive "all" directory target.
-tests/googletest/googletest/all: tests/googletest/googletest/CMakeFiles/gtest.dir/all
-tests/googletest/googletest/all: tests/googletest/googletest/CMakeFiles/gtest_main.dir/all
-.PHONY : tests/googletest/googletest/all
-
-# Recursive "codegen" directory target.
-tests/googletest/googletest/codegen: tests/googletest/googletest/CMakeFiles/gtest.dir/codegen
-tests/googletest/googletest/codegen: tests/googletest/googletest/CMakeFiles/gtest_main.dir/codegen
-.PHONY : tests/googletest/googletest/codegen
-
-# Recursive "preinstall" directory target.
-tests/googletest/googletest/preinstall:
-.PHONY : tests/googletest/googletest/preinstall
-
-# Recursive "clean" directory target.
-tests/googletest/googletest/clean: tests/googletest/googletest/CMakeFiles/gtest.dir/clean
-tests/googletest/googletest/clean: tests/googletest/googletest/CMakeFiles/gtest_main.dir/clean
-.PHONY : tests/googletest/googletest/clean
 
 #=============================================================================
 # Target rules for target core/CMakeFiles/gpu_tasks.dir
@@ -226,8 +226,8 @@ core/CMakeFiles/gpu_tasks.dir/clean:
 
 # All Build rule for target.
 tests/CMakeFiles/test_addvect.dir/all: core/CMakeFiles/gpu_tasks.dir/all
-tests/CMakeFiles/test_addvect.dir/all: tests/googletest/googletest/CMakeFiles/gtest.dir/all
-tests/CMakeFiles/test_addvect.dir/all: tests/googletest/googletest/CMakeFiles/gtest_main.dir/all
+tests/CMakeFiles/test_addvect.dir/all: _deps/googletest-build/googletest/CMakeFiles/gtest.dir/all
+tests/CMakeFiles/test_addvect.dir/all: _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/all
 	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/test_addvect.dir/build.make tests/CMakeFiles/test_addvect.dir/depend
 	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/test_addvect.dir/build.make tests/CMakeFiles/test_addvect.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/content/GPU-TASKS/build/CMakeFiles --progress-num=11,12 "Built target test_addvect"
@@ -256,133 +256,133 @@ tests/CMakeFiles/test_addvect.dir/clean:
 .PHONY : tests/CMakeFiles/test_addvect.dir/clean
 
 #=============================================================================
-# Target rules for target tests/googletest/googlemock/CMakeFiles/gmock.dir
+# Target rules for target _deps/googletest-build/googlemock/CMakeFiles/gmock.dir
 
 # All Build rule for target.
-tests/googletest/googlemock/CMakeFiles/gmock.dir/all: tests/googletest/googletest/CMakeFiles/gtest.dir/all
-	$(MAKE) $(MAKESILENT) -f tests/googletest/googlemock/CMakeFiles/gmock.dir/build.make tests/googletest/googlemock/CMakeFiles/gmock.dir/depend
-	$(MAKE) $(MAKESILENT) -f tests/googletest/googlemock/CMakeFiles/gmock.dir/build.make tests/googletest/googlemock/CMakeFiles/gmock.dir/build
+_deps/googletest-build/googlemock/CMakeFiles/gmock.dir/all: _deps/googletest-build/googletest/CMakeFiles/gtest.dir/all
+	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/build.make _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/depend
+	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/build.make _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/content/GPU-TASKS/build/CMakeFiles --progress-num=1,2 "Built target gmock"
-.PHONY : tests/googletest/googlemock/CMakeFiles/gmock.dir/all
+.PHONY : _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/all
 
 # Build rule for subdir invocation for target.
-tests/googletest/googlemock/CMakeFiles/gmock.dir/rule: cmake_check_build_system
+_deps/googletest-build/googlemock/CMakeFiles/gmock.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /content/GPU-TASKS/build/CMakeFiles 4
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tests/googletest/googlemock/CMakeFiles/gmock.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /content/GPU-TASKS/build/CMakeFiles 0
-.PHONY : tests/googletest/googlemock/CMakeFiles/gmock.dir/rule
+.PHONY : _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/rule
 
 # Convenience name for target.
-gmock: tests/googletest/googlemock/CMakeFiles/gmock.dir/rule
+gmock: _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/rule
 .PHONY : gmock
 
 # codegen rule for target.
-tests/googletest/googlemock/CMakeFiles/gmock.dir/codegen:
-	$(MAKE) $(MAKESILENT) -f tests/googletest/googlemock/CMakeFiles/gmock.dir/build.make tests/googletest/googlemock/CMakeFiles/gmock.dir/codegen
+_deps/googletest-build/googlemock/CMakeFiles/gmock.dir/codegen:
+	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/build.make _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/codegen
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/content/GPU-TASKS/build/CMakeFiles --progress-num=1,2 "Finished codegen for target gmock"
-.PHONY : tests/googletest/googlemock/CMakeFiles/gmock.dir/codegen
+.PHONY : _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/codegen
 
 # clean rule for target.
-tests/googletest/googlemock/CMakeFiles/gmock.dir/clean:
-	$(MAKE) $(MAKESILENT) -f tests/googletest/googlemock/CMakeFiles/gmock.dir/build.make tests/googletest/googlemock/CMakeFiles/gmock.dir/clean
-.PHONY : tests/googletest/googlemock/CMakeFiles/gmock.dir/clean
+_deps/googletest-build/googlemock/CMakeFiles/gmock.dir/clean:
+	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/build.make _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/clean
+.PHONY : _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/clean
 
 #=============================================================================
-# Target rules for target tests/googletest/googlemock/CMakeFiles/gmock_main.dir
+# Target rules for target _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir
 
 # All Build rule for target.
-tests/googletest/googlemock/CMakeFiles/gmock_main.dir/all: tests/googletest/googlemock/CMakeFiles/gmock.dir/all
-tests/googletest/googlemock/CMakeFiles/gmock_main.dir/all: tests/googletest/googletest/CMakeFiles/gtest.dir/all
-	$(MAKE) $(MAKESILENT) -f tests/googletest/googlemock/CMakeFiles/gmock_main.dir/build.make tests/googletest/googlemock/CMakeFiles/gmock_main.dir/depend
-	$(MAKE) $(MAKESILENT) -f tests/googletest/googlemock/CMakeFiles/gmock_main.dir/build.make tests/googletest/googlemock/CMakeFiles/gmock_main.dir/build
+_deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/all: _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/all
+_deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/all: _deps/googletest-build/googletest/CMakeFiles/gtest.dir/all
+	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/build.make _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/depend
+	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/build.make _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/content/GPU-TASKS/build/CMakeFiles --progress-num=3,4 "Built target gmock_main"
-.PHONY : tests/googletest/googlemock/CMakeFiles/gmock_main.dir/all
+.PHONY : _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/all
 
 # Build rule for subdir invocation for target.
-tests/googletest/googlemock/CMakeFiles/gmock_main.dir/rule: cmake_check_build_system
+_deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /content/GPU-TASKS/build/CMakeFiles 6
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tests/googletest/googlemock/CMakeFiles/gmock_main.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /content/GPU-TASKS/build/CMakeFiles 0
-.PHONY : tests/googletest/googlemock/CMakeFiles/gmock_main.dir/rule
+.PHONY : _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/rule
 
 # Convenience name for target.
-gmock_main: tests/googletest/googlemock/CMakeFiles/gmock_main.dir/rule
+gmock_main: _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/rule
 .PHONY : gmock_main
 
 # codegen rule for target.
-tests/googletest/googlemock/CMakeFiles/gmock_main.dir/codegen:
-	$(MAKE) $(MAKESILENT) -f tests/googletest/googlemock/CMakeFiles/gmock_main.dir/build.make tests/googletest/googlemock/CMakeFiles/gmock_main.dir/codegen
+_deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/codegen:
+	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/build.make _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/codegen
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/content/GPU-TASKS/build/CMakeFiles --progress-num=3,4 "Finished codegen for target gmock_main"
-.PHONY : tests/googletest/googlemock/CMakeFiles/gmock_main.dir/codegen
+.PHONY : _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/codegen
 
 # clean rule for target.
-tests/googletest/googlemock/CMakeFiles/gmock_main.dir/clean:
-	$(MAKE) $(MAKESILENT) -f tests/googletest/googlemock/CMakeFiles/gmock_main.dir/build.make tests/googletest/googlemock/CMakeFiles/gmock_main.dir/clean
-.PHONY : tests/googletest/googlemock/CMakeFiles/gmock_main.dir/clean
+_deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/clean:
+	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/build.make _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/clean
+.PHONY : _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/clean
 
 #=============================================================================
-# Target rules for target tests/googletest/googletest/CMakeFiles/gtest.dir
+# Target rules for target _deps/googletest-build/googletest/CMakeFiles/gtest.dir
 
 # All Build rule for target.
-tests/googletest/googletest/CMakeFiles/gtest.dir/all:
-	$(MAKE) $(MAKESILENT) -f tests/googletest/googletest/CMakeFiles/gtest.dir/build.make tests/googletest/googletest/CMakeFiles/gtest.dir/depend
-	$(MAKE) $(MAKESILENT) -f tests/googletest/googletest/CMakeFiles/gtest.dir/build.make tests/googletest/googletest/CMakeFiles/gtest.dir/build
+_deps/googletest-build/googletest/CMakeFiles/gtest.dir/all:
+	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googletest/CMakeFiles/gtest.dir/build.make _deps/googletest-build/googletest/CMakeFiles/gtest.dir/depend
+	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googletest/CMakeFiles/gtest.dir/build.make _deps/googletest-build/googletest/CMakeFiles/gtest.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/content/GPU-TASKS/build/CMakeFiles --progress-num=7,8 "Built target gtest"
-.PHONY : tests/googletest/googletest/CMakeFiles/gtest.dir/all
+.PHONY : _deps/googletest-build/googletest/CMakeFiles/gtest.dir/all
 
 # Build rule for subdir invocation for target.
-tests/googletest/googletest/CMakeFiles/gtest.dir/rule: cmake_check_build_system
+_deps/googletest-build/googletest/CMakeFiles/gtest.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /content/GPU-TASKS/build/CMakeFiles 2
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tests/googletest/googletest/CMakeFiles/gtest.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 _deps/googletest-build/googletest/CMakeFiles/gtest.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /content/GPU-TASKS/build/CMakeFiles 0
-.PHONY : tests/googletest/googletest/CMakeFiles/gtest.dir/rule
+.PHONY : _deps/googletest-build/googletest/CMakeFiles/gtest.dir/rule
 
 # Convenience name for target.
-gtest: tests/googletest/googletest/CMakeFiles/gtest.dir/rule
+gtest: _deps/googletest-build/googletest/CMakeFiles/gtest.dir/rule
 .PHONY : gtest
 
 # codegen rule for target.
-tests/googletest/googletest/CMakeFiles/gtest.dir/codegen:
-	$(MAKE) $(MAKESILENT) -f tests/googletest/googletest/CMakeFiles/gtest.dir/build.make tests/googletest/googletest/CMakeFiles/gtest.dir/codegen
+_deps/googletest-build/googletest/CMakeFiles/gtest.dir/codegen:
+	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googletest/CMakeFiles/gtest.dir/build.make _deps/googletest-build/googletest/CMakeFiles/gtest.dir/codegen
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/content/GPU-TASKS/build/CMakeFiles --progress-num=7,8 "Finished codegen for target gtest"
-.PHONY : tests/googletest/googletest/CMakeFiles/gtest.dir/codegen
+.PHONY : _deps/googletest-build/googletest/CMakeFiles/gtest.dir/codegen
 
 # clean rule for target.
-tests/googletest/googletest/CMakeFiles/gtest.dir/clean:
-	$(MAKE) $(MAKESILENT) -f tests/googletest/googletest/CMakeFiles/gtest.dir/build.make tests/googletest/googletest/CMakeFiles/gtest.dir/clean
-.PHONY : tests/googletest/googletest/CMakeFiles/gtest.dir/clean
+_deps/googletest-build/googletest/CMakeFiles/gtest.dir/clean:
+	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googletest/CMakeFiles/gtest.dir/build.make _deps/googletest-build/googletest/CMakeFiles/gtest.dir/clean
+.PHONY : _deps/googletest-build/googletest/CMakeFiles/gtest.dir/clean
 
 #=============================================================================
-# Target rules for target tests/googletest/googletest/CMakeFiles/gtest_main.dir
+# Target rules for target _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir
 
 # All Build rule for target.
-tests/googletest/googletest/CMakeFiles/gtest_main.dir/all: tests/googletest/googletest/CMakeFiles/gtest.dir/all
-	$(MAKE) $(MAKESILENT) -f tests/googletest/googletest/CMakeFiles/gtest_main.dir/build.make tests/googletest/googletest/CMakeFiles/gtest_main.dir/depend
-	$(MAKE) $(MAKESILENT) -f tests/googletest/googletest/CMakeFiles/gtest_main.dir/build.make tests/googletest/googletest/CMakeFiles/gtest_main.dir/build
+_deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/all: _deps/googletest-build/googletest/CMakeFiles/gtest.dir/all
+	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/build.make _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/depend
+	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/build.make _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/content/GPU-TASKS/build/CMakeFiles --progress-num=9,10 "Built target gtest_main"
-.PHONY : tests/googletest/googletest/CMakeFiles/gtest_main.dir/all
+.PHONY : _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/all
 
 # Build rule for subdir invocation for target.
-tests/googletest/googletest/CMakeFiles/gtest_main.dir/rule: cmake_check_build_system
+_deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /content/GPU-TASKS/build/CMakeFiles 4
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tests/googletest/googletest/CMakeFiles/gtest_main.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /content/GPU-TASKS/build/CMakeFiles 0
-.PHONY : tests/googletest/googletest/CMakeFiles/gtest_main.dir/rule
+.PHONY : _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/rule
 
 # Convenience name for target.
-gtest_main: tests/googletest/googletest/CMakeFiles/gtest_main.dir/rule
+gtest_main: _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/rule
 .PHONY : gtest_main
 
 # codegen rule for target.
-tests/googletest/googletest/CMakeFiles/gtest_main.dir/codegen:
-	$(MAKE) $(MAKESILENT) -f tests/googletest/googletest/CMakeFiles/gtest_main.dir/build.make tests/googletest/googletest/CMakeFiles/gtest_main.dir/codegen
+_deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/codegen:
+	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/build.make _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/codegen
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/content/GPU-TASKS/build/CMakeFiles --progress-num=9,10 "Finished codegen for target gtest_main"
-.PHONY : tests/googletest/googletest/CMakeFiles/gtest_main.dir/codegen
+.PHONY : _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/codegen
 
 # clean rule for target.
-tests/googletest/googletest/CMakeFiles/gtest_main.dir/clean:
-	$(MAKE) $(MAKESILENT) -f tests/googletest/googletest/CMakeFiles/gtest_main.dir/build.make tests/googletest/googletest/CMakeFiles/gtest_main.dir/clean
-.PHONY : tests/googletest/googletest/CMakeFiles/gtest_main.dir/clean
+_deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/clean:
+	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/build.make _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/clean
+.PHONY : _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.
