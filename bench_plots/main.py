@@ -4,7 +4,7 @@ import os
 import sys
 
 objs_GPUFull = list()
-objs_GPUCore = list()
+objs_GPUEsh = list()
 objs_CPU = list()
 
 
@@ -27,6 +27,10 @@ def plot():
     gpu_x = [obj['number_elements'] for obj in objs_GPUFull]
     gpu_y = [obj['real_time'] / 1000000 for obj in objs_GPUFull]
     plt.plot(gpu_x, gpu_y, marker='s', label="GPU", linewidth=2)
+
+    gpu_esh_x = [obj['number_elements'] for obj in objs_GPUEsh]
+    gpu_esh_y = [obj['real_time'] / 1000000 for obj in objs_GPUEsh]
+    plt.plot(gpu_esh_x, gpu_esh_y, marker='p', label="GPU_Esh", linewidth=2)
 
     plt.title("ms/number_elements")
     plt.xlabel("Number_elements")
@@ -51,9 +55,12 @@ def parsing_json(list_obj):
         if "CPU" in obj["name"]:
             obj_CPU = {"name": (obj["name"].split("/"))[0], "number_elements": (obj["name"].split("/"))[1], "real_time": obj["real_time"]}
             objs_CPU.append(obj_CPU)
-        elif "GPU" in obj["name"]:
+        elif "GPU" in obj["name"] and "Esh" not in obj["name"]:
             obj_GPU = {"name": (obj["name"].split("/"))[0], "number_elements": (obj["name"].split("/"))[1], "real_time": obj["real_time"]}
             objs_GPUFull.append(obj_GPU)
+        elif "Esh" in obj["name"]:
+            obj_GPU_Esh = {"name": (obj["name"].split("/"))[0], "number_elements": (obj["name"].split("/"))[1], "real_time": obj["real_time"]}
+            objs_GPUEsh.append(obj_GPU_Esh)
 
 
 if __name__ == '__main__':
