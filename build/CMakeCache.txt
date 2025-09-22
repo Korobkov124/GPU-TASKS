@@ -650,15 +650,6 @@ bench_IS_TOP_LEVEL:STATIC=OFF
 bench_SOURCE_DIR:STATIC=/content/GPU-TASKS/bench
 
 //Value Computed by CMake
-bench_lab1_BINARY_DIR:STATIC=/content/GPU-TASKS/build/bench
-
-//Value Computed by CMake
-bench_lab1_IS_TOP_LEVEL:STATIC=OFF
-
-//Value Computed by CMake
-bench_lab1_SOURCE_DIR:STATIC=/content/GPU-TASKS/bench
-
-//Value Computed by CMake
 benchmark_BINARY_DIR:STATIC=/content/GPU-TASKS/build/_deps/benchmark-build
 
 //Value Computed by CMake

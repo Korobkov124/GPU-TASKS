@@ -5,21 +5,48 @@
 #include <cmath>
 #include "gpu_addVect.cuh"
 
-TEST(AddVectTest, CpuVsGpuAccuracy) {
-    const int N = 256;
+
+std::vector<int> g_vector_sizes = {256};
+
+class AddVectParamTest : public ::testing::TestWithParam<int> {};
+
+std::vector<int> ParseVectorSizes(const std::string& arg) {
+    std::vector<int> result;
+    size_t pos = arg.find("=");
+    
+    if (pos == std::string::npos) return result;
+    std::string values = arg.substr(pos + 1);
+    std::stringstream ss(values);
+    std::string item;
+    
+    while (std::getline(ss, item, ',')) {
+        try {
+            result.push_back(std::stoi(item));
+        } catch (...) {
+            std::cerr << "Invalid integer in --vector_sizes: " << item << "\n";
+        }
+    }
+    
+    return result;
+}
+
+
+TEST_P(AddVectParamTest, CpuVsGpuAccuracy) {
+
+    const int N = GetParam();
+    std::cout << "N -> " << N;
     std::vector<float> a(N), b(N), cpu_res(N), gpu_res(N);
 
-    
-    std::mt19937 rng(12345);
-    std::uniform_real_distribution<float> dist(-100.0f, 100.0f);
-    for (int i = 0; i < N; ++i) {
-        a[i] = dist(rng);
-        b[i] = dist(rng);
+    for (int i = 0; i < N; i++) {
+        a[i] = 0.1f * i;
+        b[i] = 0.2f * i;
     }
 
     AddVect::AddingVectors::CpuAddVect(a.data(), b.data(), cpu_res.data(), N);
 
     AddVect::AddingVectors::RunGpu(a.data(), b.data(), gpu_res.data(), N);
+
+    cudaDeviceSynchronize();
 
     const float abs_error = 1e-6f;
 
@@ -34,13 +61,28 @@ TEST(AddVectTest, CpuVsGpuAccuracy) {
     std::cout << "Metrics test complete successfull!\n";
 }
 
-
+INSTANTIATE_TEST_SUITE_P(
+    VectorSizes,
+    AddVectParamTest,
+    ::testing::ValuesIn(g_vector_sizes)
+);
 
 
 int main(int argc, char **argv)
 {
-  ::testing::InitGoogleTest(&argc, argv);
+  for (int i = 1; i < argc; ++i) {
+        std::string arg = argv[i];
+        if (arg.rfind("--vector_sizes=", 0) == 0) {
+            g_vector_sizes = ParseVectorSizes(arg);
+            for (int j = i; j < argc - 1; ++j) {
+                argv[j] = argv[j + 1];
+            }
+            --argc;
+            break;
+        }
+    }
 
-  return RUN_ALL_TESTS();
+    ::testing::InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();
 }
 
