@@ -16,7 +16,7 @@ namespace AddVect{
         cudaEventCreate(&stop);
         cudaEventRecord(start, 0);
 
-        GpuAddVect <<< 1, gridSize >>>(devVect1, devVect2, devResult);
+        GpuAddVect <<< 1, gridSize >>>(vect1, vect2, resultVect);
 
         cudaEventRecord(stop);
         cudaEventSynchronize(stop);
