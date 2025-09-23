@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/bench.dir/main.cu.o -o bench   -L/usr/local/cuda/targets/x86_64-linux/lib  -Wl,-rpath,/content/GPU-TASKS/build/core ../core/libgpu_tasks.so ../_deps/benchmark-build/src/libbenchmark.a -lrt -lcudadevrt -lcudart_static -lrt -lpthread -ldl

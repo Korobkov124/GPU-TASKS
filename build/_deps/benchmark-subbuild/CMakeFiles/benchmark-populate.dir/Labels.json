@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/content/GPU-TASKS/build/_deps/benchmark-subbuild/CMakeFiles/benchmark-populate"
+		},
+		{
+			"file" : "/content/GPU-TASKS/build/_deps/benchmark-subbuild/CMakeFiles/benchmark-populate.rule"
+		},
+		{
+			"file" : "/content/GPU-TASKS/build/_deps/benchmark-subbuild/CMakeFiles/benchmark-populate-complete.rule"
+		},
+		{
+			"file" : "/content/GPU-TASKS/build/_deps/benchmark-subbuild/benchmark-populate-prefix/src/benchmark-populate-stamp/benchmark-populate-build.rule"
+		},
+		{
+			"file" : "/content/GPU-TASKS/build/_deps/benchmark-subbuild/benchmark-populate-prefix/src/benchmark-populate-stamp/benchmark-populate-configure.rule"
+		},
+		{
+			"file" : "/content/GPU-TASKS/build/_deps/benchmark-subbuild/benchmark-populate-prefix/src/benchmark-populate-stamp/benchmark-populate-download.rule"
+		},
+		{
+			"file" : "/content/GPU-TASKS/build/_deps/benchmark-subbuild/benchmark-populate-prefix/src/benchmark-populate-stamp/benchmark-populate-install.rule"
+		},
+		{
+			"file" : "/content/GPU-TASKS/build/_deps/benchmark-subbuild/benchmark-populate-prefix/src/benchmark-populate-stamp/benchmark-populate-mkdir.rule"
+		},
+		{
+			"file" : "/content/GPU-TASKS/build/_deps/benchmark-subbuild/benchmark-populate-prefix/src/benchmark-populate-stamp/benchmark-populate-patch.rule"
+		},
+		{
+			"file" : "/content/GPU-TASKS/build/_deps/benchmark-subbuild/benchmark-populate-prefix/src/benchmark-populate-stamp/benchmark-populate-test.rule"
+		},
+		{
+			"file" : "/content/GPU-TASKS/build/_deps/benchmark-subbuild/benchmark-populate-prefix/src/benchmark-populate-stamp/benchmark-populate-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"benchmark-populate"
+		],
+		"name" : "benchmark-populate"
+	}
+}

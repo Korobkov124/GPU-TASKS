@@ -1,38 +1,52 @@
 #include <iostream>
-#include <gpu_addVect.cuh>
+#include "gpu_addVect.cuh"
+#include <cuda_runtime.h>
 
 namespace AddVect{
 
-    __global__ void GpuAddVect(float* vect1, float* vect2, float* resultVect, int N){
+    __global__ void GpuAddVect(float* vect1, float* vect2, float* resultVect){
         int i = threadIdx.x;
         resultVect[i] = vect1[i] + vect2[i];
     };
 
-    float* AddingVectors::CpuAddVect(float* vect1, float* vect2, float* resultVect, int N){
-        for(int i = 0; i < N; i++){
+    void FullGpuAddVect(float* vect1, float* vect2, float* resultVect, int gridSize, float* kernel_ms){
+        cudaEvent_t start, stop;
+        
+        cudaEventCreate(&start);
+        cudaEventCreate(&stop);
+        cudaEventRecord(start, 0);
+
+        GpuAddVect <<< 1, gridSize >>>(devVect1, devVect2, devResult);
+
+        cudaEventRecord(stop);
+        cudaEventSynchronize(stop);
+        cudaEventElapsedTime(kernel_ms, start, stop);
+    };
+
+    float* AddingVectors::CpuAddVect(float* vect1, float* vect2, float* resultVect, int gridSize){
+        for(int i = 0; i < gridSize; i++){
             resultVect[i] = vect1[i] + vect2[i];
         }
         
         return resultVect;
     };
 
-    float* AddingVectors::RunGpu(float* vect1, float* vect2, float* resultVect, int N){
+    float* AddingVectors::RunGpu(float* vect1, float* vect2, float* resultVect, int gridSize){
         float *devVect1, *devVect2, *devResult;
 
-        cudaMalloc((void**)&devVect1, sizeof(float) * N);
-        cudaMalloc((void**)&devVect2, sizeof(float) * N);
-        cudaMalloc((void**)&devResult, sizeof(float) * N);
+        cudaMalloc((void**)&devVect1, sizeof(float) * gridSize);
+        cudaMalloc((void**)&devVect2, sizeof(float) * gridSize);
+        cudaMalloc((void**)&devResult, sizeof(float) * gridSize);
 
-        cudaMemcpy(devVect1, vect1, sizeof(float) * N, cudaMemcpyHostToDevice);
-        cudaMemcpy(devVect2, vect2, sizeof(float) * N, cudaMemcpyHostToDevice);
-        cudaMemcpy(devResult, resultVect, sizeof(float) * N, cudaMemcpyHostToDevice);
+        cudaMemcpy(devVect1, vect1, sizeof(float) * gridSize, cudaMemcpyHostToDevice);
+        cudaMemcpy(devVect2, vect2, sizeof(float) * gridSize, cudaMemcpyHostToDevice);
+        cudaMemcpy(devResult, resultVect, sizeof(float) * gridSize, cudaMemcpyHostToDevice);
 
-        GpuAddVect <<< 1, N >>>(devVect2, devVect2, resultVect, N);
+        GpuAddVect <<< 1, gridSize >>>(devVect1, devVect2, devResult);
 
-        cudaMemcpy(resultVect, devResult, sizeof(float), cudaMemcpyDeviceToHost);
-
+        cudaMemcpy(resultVect, devResult, sizeof(float) * gridSize, cudaMemcpyDeviceToHost);
         
-        cudaFree(devVect2);
+        cudaFree(devVect1);
         cudaFree(devVect2);
         cudaFree(devResult);
         return resultVect;
