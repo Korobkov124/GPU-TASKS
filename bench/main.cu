@@ -6,88 +6,86 @@
 #include "gpu_addVect.cuh"
 
 
-// static void Bench_CPU(benchmark::State& state) {
-//   int N = state.range(0);
-//   std::vector<float> a(N), b(N), cpu_res(N);
+static void Bench_CPU(benchmark::State& state) {
+  int N = state.range(0);
+  std::vector<float> a(N), b(N), cpu_res(N);
 
 
-//   std::mt19937 rng(12345);
-//   std::uniform_real_distribution<float> dist(-100.0f, 100.0f);
-//   for (int i = 0; i < N; ++i) {
-//       a[i] = dist(rng);
-//       b[i] = dist(rng);
-//   }
+  std::mt19937 rng(12345);
+  std::uniform_real_distribution<float> dist(-100.0f, 100.0f);
+  for (int i = 0; i < N; ++i) {
+      a[i] = dist(rng);
+      b[i] = dist(rng);
+  }
 
-//   for (auto _ : state) {
-//         AddVect::AddingVectors::CpuAddVect(a.data(), b.data(), cpu_res.data(), N);
-//         benchmark::DoNotOptimize(cpu_res.data());
-//     }
-// }
+  for (auto _ : state) {
+        AddVect::AddingVectors::CpuAddVect(a.data(), b.data(), cpu_res.data(), N);
+        benchmark::DoNotOptimize(cpu_res.data());
+    }
+}
 
-// static void Bench_GPU(benchmark::State& state) {
-//   int N = state.range(0);
-//   std::vector<float> a(N), b(N), gpu_res(N);
-
-
-//   std::mt19937 rng(12345);
-//   std::uniform_real_distribution<float> dist(-100.0f, 100.0f);
-//   for (int i = 0; i < N; ++i) {
-//       a[i] = dist(rng);
-//       b[i] = dist(rng);
-//   }
-
-//   for (auto _ : state) {
-//         AddVect::AddingVectors::RunGpu(a.data(), b.data(), gpu_res.data(), N);
-//         benchmark::DoNotOptimize(gpu_res.data());
-//     }
-// }
-
-// static void Bench_GPU_Esh(benchmark::State& state) {
-//   int N = state.range(0);
-//   std::vector<float> a(N), b(N), gpu_res(N);
+static void Bench_GPU(benchmark::State& state) {
+  int N = state.range(0);
+  std::vector<float> a(N), b(N), gpu_res(N);
 
 
-//   std::mt19937 rng(12345);
-//   std::uniform_real_distribution<float> dist(-100.0f, 100.0f);
-//   for (int i = 0; i < N; ++i) {
-//       a[i] = dist(rng);
-//       b[i] = dist(rng);
-//   }
+  std::mt19937 rng(12345);
+  std::uniform_real_distribution<float> dist(-100.0f, 100.0f);
+  for (int i = 0; i < N; ++i) {
+      a[i] = dist(rng);
+      b[i] = dist(rng);
+  }
 
-//   float *devVect1, *devVect2, *devResult;
+  for (auto _ : state) {
+        AddVect::AddingVectors::RunGpu(a.data(), b.data(), gpu_res.data(), N);
+        benchmark::DoNotOptimize(gpu_res.data());
+    }
+}
 
-//   cudaMalloc((void**)&devVect1, sizeof(float) * N);
-//   cudaMalloc((void**)&devVect2, sizeof(float) * N);
-//   cudaMalloc((void**)&devResult, sizeof(float) * N);
+static void Bench_GPU_Esh(benchmark::State& state) {
+  int N = state.range(0);
+  std::vector<float> a(N), b(N), gpu_res(N);
 
-//   cudaMemcpy(devVect1, a, sizeof(float) * N, cudaMemcpyHostToDevice);
-//   cudaMemcpy(devVect2, b, sizeof(float) * N, cudaMemcpyHostToDevice);
-//   cudaMemcpy(devResult, gpu_res, sizeof(float) * N, cudaMemcpyHostToDevice);
+  for (int i = 0; i < N; ++i) {
+      a[i] = 0.1f * i;
+      b[i] = 0.2f * i;
+  }
 
-//   float *kms = new float;
+  float *devVect1, *devVect2, *devResult;
 
-//   for (auto _ : state) {
-//     cudaEvent_t start, stop;
-//     cudaEventCreate(&start);
-//     cudaEventCreate(&stop);
-//     cudaEventRecord(start);
+  cudaMalloc((void**)&devVect1, sizeof(float) * N);
+  cudaMalloc((void**)&devVect2, sizeof(float) * N);
+  cudaMalloc((void**)&devResult, sizeof(float) * N);
 
-//     AddVect::AddingVectors::RunGpu(devVect1.data(), devVect2.data(), devResult.data(), N);
+  cudaMemcpy(devVect1, a.data(), sizeof(float) * N, cudaMemcpyHostToDevice);
+  cudaMemcpy(devVect2, b.data(), sizeof(float) * N, cudaMemcpyHostToDevice);
+  cudaMemcpy(devResult, gpu_res.data(), sizeof(float) * N, cudaMemcpyHostToDevice);
 
-    
-//   }
-// }
+  float *kms = new float;
 
-// BENCHMARK(Bench_CPU)
-//   ->RangeMultiplier(2)
-//   ->Range(1<<10, 1<<22);
+  for (auto _ : state) {
+    AddVect::FullGpuAddVect(devVect1, devVect2, devResult, N, kms);
+    state.SetIterationTime(*kms);
+    benchmark::DoNotOptimize(devResult);
+  }
 
-// BENCHMARK(Bench_GPU)
-//   ->RangeMultiplier(2)
-//   ->Range(1<<10, 1<<22);
+  cudaFree(devVect1);
+  cudaFree(devVect2);
+  cudaFree(devResult);
 
-// BENCHMARK(Bench_GPU_Esh)
-//   ->RangeMultiplier(2)
-//   ->Range(1<<10, 1<<22);
+  delete kms;
+}
+
+BENCHMARK(Bench_CPU)
+  ->RangeMultiplier(2)
+  ->Range(1<<10, 1<<20);
+
+BENCHMARK(Bench_GPU)
+  ->RangeMultiplier(2)
+  ->Range(1<<10, 1<<20);
+
+BENCHMARK(Bench_GPU_Esh)
+  ->RangeMultiplier(2)
+  ->Range(1<<10, 1<<20);
 
 BENCHMARK_MAIN();
