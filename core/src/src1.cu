@@ -14,19 +14,11 @@ namespace AddVect{
         resultVect[i] = vect1[i] + vect2[i];
     };
 
-    void FullGpuAddVect(float* vect1, float* vect2, float* resultVect, std::size_t vectSize, float* kernel_ms){
+    void FullGpuAddVect(float* vect1, float* vect2, float* resultVect, std::size_t vectSize){
         std::size_t gridSize = GetGridSize(vectSize);
-        cudaEvent_t start, stop;
-        
-        cudaEventCreate(&start);
-        cudaEventCreate(&stop);
-        cudaEventRecord(start, 0);
 
         GpuAddVect <<< blockSize, gridSize >>>(vect1, vect2, resultVect);
 
-        cudaEventRecord(stop);
-        cudaEventSynchronize(stop);
-        cudaEventElapsedTime(kernel_ms, start, stop);
     };
 
     float* CpuAddVect(float* vect1, float* vect2, float* resultVect, std::size_t vectSize){
