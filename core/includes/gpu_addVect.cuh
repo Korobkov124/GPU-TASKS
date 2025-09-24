@@ -7,7 +7,7 @@ namespace AddVect{
 
     std::size_t GetGridSize(std::size_t vectSize);
 
-    __global__ void GpuAddVect(float* vect1, float* vect2, float* resultVect);
+    __global__ void GpuAddVect(float* vect1, float* vect2, float* resultVect, std::size_t vectSize);
 
     void FullGpuAddVect(float* vect1, float* vect2, float* resultVect, std::size_t vectSize);
 
