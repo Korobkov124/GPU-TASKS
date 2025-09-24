@@ -4,47 +4,54 @@
 
 namespace AddVect{
 
+    std::size_t GetGridSize(std::size_t vectSize) {
+        
+        return (vectSize + blockSize - 1) / blockSize;
+    }
+
     __global__ void GpuAddVect(float* vect1, float* vect2, float* resultVect){
         int i = threadIdx.x;
         resultVect[i] = vect1[i] + vect2[i];
     };
 
-    void FullGpuAddVect(float* vect1, float* vect2, float* resultVect, int gridSize, float* kernel_ms){
+    void FullGpuAddVect(float* vect1, float* vect2, float* resultVect, std::size_t vectSize, float* kernel_ms){
+        std::size_t gridSize = GetGridSize(vectSize);
         cudaEvent_t start, stop;
         
         cudaEventCreate(&start);
         cudaEventCreate(&stop);
         cudaEventRecord(start, 0);
 
-        GpuAddVect <<< 1, gridSize >>>(vect1, vect2, resultVect);
+        GpuAddVect <<< blockSize, gridSize >>>(vect1, vect2, resultVect);
 
         cudaEventRecord(stop);
         cudaEventSynchronize(stop);
         cudaEventElapsedTime(kernel_ms, start, stop);
     };
 
-    float* AddingVectors::CpuAddVect(float* vect1, float* vect2, float* resultVect, int gridSize){
-        for(int i = 0; i < gridSize; i++){
+    float* CpuAddVect(float* vect1, float* vect2, float* resultVect, std::size_t vectSize){
+        for(int i = 0; i < vectSize; i++){
             resultVect[i] = vect1[i] + vect2[i];
         }
         
         return resultVect;
     };
 
-    float* AddingVectors::RunGpu(float* vect1, float* vect2, float* resultVect, int gridSize){
+    float* RunGpu(float* vect1, float* vect2, float* resultVect, std::size_t vectSize){
+        std::size_t gridSize = GetGridSize(vectSize);
         float *devVect1, *devVect2, *devResult;
+        
+        cudaMalloc(&devVect1, sizeof(float) * vectSize);
+        cudaMalloc(&devVect2, sizeof(float) * vectSize);
+        cudaMalloc(&devResult, sizeof(float) * vectSize);
 
-        cudaMalloc((void**)&devVect1, sizeof(float) * gridSize);
-        cudaMalloc((void**)&devVect2, sizeof(float) * gridSize);
-        cudaMalloc((void**)&devResult, sizeof(float) * gridSize);
+        cudaMemcpy(devVect1, vect1, sizeof(float) * vectSize, cudaMemcpyHostToDevice);
+        cudaMemcpy(devVect2, vect2, sizeof(float) * vectSize, cudaMemcpyHostToDevice);
+        cudaMemcpy(devResult, resultVect, sizeof(float) * vectSize, cudaMemcpyHostToDevice);
 
-        cudaMemcpy(devVect1, vect1, sizeof(float) * gridSize, cudaMemcpyHostToDevice);
-        cudaMemcpy(devVect2, vect2, sizeof(float) * gridSize, cudaMemcpyHostToDevice);
-        cudaMemcpy(devResult, resultVect, sizeof(float) * gridSize, cudaMemcpyHostToDevice);
+        GpuAddVect <<< blockSize, gridSize >>>(devVect1, devVect2, devResult);
 
-        GpuAddVect <<< 1, gridSize >>>(devVect1, devVect2, devResult);
-
-        cudaMemcpy(resultVect, devResult, sizeof(float) * gridSize, cudaMemcpyDeviceToHost);
+        cudaMemcpy(resultVect, devResult, sizeof(float) * vectSize, cudaMemcpyDeviceToHost);
         
         cudaFree(devVect1);
         cudaFree(devVect2);
