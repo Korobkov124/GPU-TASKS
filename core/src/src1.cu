@@ -1,6 +1,6 @@
 #include <iostream>
 #include "gpu_addVect.cuh"
-#include <cuda_runtime.h>
+#include "cuda_timer.hpp"
 
 namespace AddVect{
 

@@ -19,7 +19,7 @@ static void Bench_CPU(benchmark::State& state) {
   }
 
   for (auto _ : state) {
-        AddVect::AddingVectors::CpuAddVect(a.data(), b.data(), cpu_res.data(), N);
+        AddVect::CpuAddVect(a.data(), b.data(), cpu_res.data(), N);
         benchmark::DoNotOptimize(cpu_res.data());
     }
 }
@@ -37,7 +37,7 @@ static void Bench_GPU(benchmark::State& state) {
   }
 
   for (auto _ : state) {
-        AddVect::AddingVectors::RunGpu(a.data(), b.data(), gpu_res.data(), N);
+        AddVect::RunGpu(a.data(), b.data(), gpu_res.data(), N);
         benchmark::DoNotOptimize(gpu_res.data());
     }
 }
@@ -64,7 +64,7 @@ static void Bench_GPU_Esh(benchmark::State& state) {
   float *kms = new float;
 
   for (auto _ : state) {
-    AddVect::FullGpuAddVect(devVect1, devVect2, devResult, N, kms);
+    AddVect::FullGpuAddVect(devVect1, devVect2, devResult, N);
     state.SetIterationTime(*kms);
     benchmark::DoNotOptimize(devResult);
   }

@@ -19,6 +19,7 @@ target_compile_options(test_addvect PRIVATE -Wall -O3)
 
 target_include_directories(test_addvect PRIVATE
     ${PROJECT_SOURCE_DIR}/сore/includes
+    ${PROJECT_SOURCE_DIR}/utils/includes
 )
 
-target_link_libraries(test_addvect PRIVATE gpu_tasks gtest_main)
+target_link_libraries(test_addvect PRIVATE gpu_tasks cuda_timer gtest_main)
