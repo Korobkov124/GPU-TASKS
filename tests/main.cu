@@ -42,9 +42,9 @@ TEST_P(AddVectParamTest, CpuVsGpuAccuracy) {
         b[i] = 0.2f * i;
     }
 
-    AddVect::AddingVectors::CpuAddVect(a.data(), b.data(), cpu_res.data(), N);
+    AddVect::CpuAddVect(a.data(), b.data(), cpu_res.data(), N);
 
-    AddVect::AddingVectors::RunGpu(a.data(), b.data(), gpu_res.data(), N);
+    AddVect::RunGpu(a.data(), b.data(), gpu_res.data(), N);
 
     cudaDeviceSynchronize();
 

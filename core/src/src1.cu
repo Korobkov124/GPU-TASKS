@@ -10,7 +10,7 @@ namespace AddVect{
     }
 
     __global__ void GpuAddVect(float* vect1, float* vect2, float* resultVect, std::size_t vectSize){
-        int i = blockDim.x * blockIdx.x * threadIdx.x;
+        int i = blockDim.x * blockIdx.x + threadIdx.x;
         if (i < vectSize) resultVect[i] = vect1[i] + vect2[i];
     };
 
