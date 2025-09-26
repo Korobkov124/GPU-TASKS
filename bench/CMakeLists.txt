@@ -11,4 +11,4 @@ FetchContent_MakeAvailable(benchmark)
 
 add_executable(bench main.cu)
 
-target_link_libraries(bench PRIVATE gpu_tasks benchmark)
+target_link_libraries(bench PRIVATE gpu_tasks cuda_timer benchmark)
