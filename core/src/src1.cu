@@ -5,7 +5,6 @@
 namespace AddVect{
 
     std::size_t GetGridSize(std::size_t vectSize) {
-        
         return (vectSize + blockSize - 1) / blockSize;
     }
 
@@ -16,7 +15,6 @@ namespace AddVect{
 
     void FullGpuAddVect(float* vect1, float* vect2, float* resultVect, std::size_t vectSize){
         std::size_t gridSize = GetGridSize(vectSize);
-
         GpuAddVect <<< blockSize, gridSize >>>(vect1, vect2, resultVect, vectSize);
 
     };

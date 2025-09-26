@@ -1,7 +1,5 @@
 cmake_minimum_required(VERSION 3.18)
 
-project(AddVect LANGUAGES CUDA CXX)
-
 include(FetchContent)
 FetchContent_Declare(
   googletest
@@ -12,14 +10,5 @@ FetchContent_MakeAvailable(googletest)
 enable_testing()
 
 add_executable(test_addvect main.cu)
-
-target_compile_features(test_addvect PRIVATE cxx_std_20)
-target_compile_options(test_addvect PRIVATE -Wall -O3)
-
-
-target_include_directories(test_addvect PRIVATE
-    ${PROJECT_SOURCE_DIR}/сore/includes
-    ${PROJECT_SOURCE_DIR}/utils/includes
-)
 
 target_link_libraries(test_addvect PRIVATE gpu_tasks cuda_timer gtest_main)

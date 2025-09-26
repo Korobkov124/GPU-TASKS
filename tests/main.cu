@@ -34,7 +34,6 @@ std::vector<std::size_t> ParseVectorSizes(const std::string& arg) {
 TEST_P(AddVectParamTest, CpuVsGpuAccuracy) {
 
     std::size_t N = GetParam();
-    std::cout << "N -> " << N;
     std::vector<float> a(N), b(N), cpu_res(N), gpu_res(N);
 
     for (std::size_t i = 0; i < N; i++) {
