@@ -6,12 +6,12 @@
 #include "gpu_addVect.cuh"
 
 
-std::vector<int> g_vector_sizes = {256};
+std::vector<std::size_t> g_vector_sizes = {256};
 
-class AddVectParamTest : public ::testing::TestWithParam<int> {};
+class AddVectParamTest : public ::testing::TestWithParam<std::size_t> {};
 
-std::vector<int> ParseVectorSizes(const std::string& arg) {
-    std::vector<int> result;
+std::vector<std::size_t> ParseVectorSizes(const std::string& arg) {
+    std::vector<std::size_t> result;
     size_t pos = arg.find("=");
     
     if (pos == std::string::npos) return result;
@@ -33,25 +33,24 @@ std::vector<int> ParseVectorSizes(const std::string& arg) {
 
 TEST_P(AddVectParamTest, CpuVsGpuAccuracy) {
 
-    const int N = GetParam();
-    std::cout << "N -> " << N;
+    std::size_t N = GetParam();
     std::vector<float> a(N), b(N), cpu_res(N), gpu_res(N);
 
-    for (int i = 0; i < N; i++) {
+    for (std::size_t i = 0; i < N; i++) {
         a[i] = 0.1f * i;
         b[i] = 0.2f * i;
     }
 
-    AddVect::AddingVectors::CpuAddVect(a.data(), b.data(), cpu_res.data(), N);
+    AddVect::CpuAddVect(a.data(), b.data(), cpu_res.data(), N);
 
-    AddVect::AddingVectors::RunGpu(a.data(), b.data(), gpu_res.data(), N);
+    AddVect::RunGpu(a.data(), b.data(), gpu_res.data(), N);
 
     cudaDeviceSynchronize();
 
     const float abs_error = 1e-6f;
 
     float max_diff = 0.0f;
-    for (int i = 0; i < N; ++i) {
+    for (std::size_t i = 0; i < N; ++i) {
         float d = std::fabs(cpu_res[i] - gpu_res[i]);
         if (d > max_diff) max_diff = d;
     }
