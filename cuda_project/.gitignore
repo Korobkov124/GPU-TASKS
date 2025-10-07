@@ -1,8 +1,21 @@
-build/
-*/build/
+[bB]uild*/
+*/[bB]uild*/
+*/*/[bB]uild*/
+cuda_project/build/
+cuda_project/*/build/
+
 *.so
 *.a
+*.lib
+*.dll
+*.dylib
 
+123test
+123test.cu
+*.exe
+*.out
+cuda_project/123test
+cuda_project/*/123test
 
 CMakeCache.txt
 CMakeFiles/
@@ -10,27 +23,47 @@ cmake_install.cmake
 Makefile
 *.cmake
 !CMakeLists.txt
-
-
-123test
-*.exe
-
+CTestTestfile.cmake
+cuda_project/CMakeCache.txt
+cuda_project/CMakeFiles/
 
 *.o
 *.obj
-
+*.ko
+*.d
 
 .vscode/
 .idea/
 *.swp
 *.swo
-
+*.sublime-*
 
 .DS_Store
 Thumbs.db
-
+*.lnk
+desktop.ini
 
 *.cubin
 *.ptx
 *.fatbin
-EOF
+*.i
+*.ii
+
+*.log
+*.aux
+*.toc
+*.out
+
+*~
+*.tmp
+*.temp
+*.cache
+
+cuda_project/core/*.so
+cuda_project/core/*.a
+cuda_project/utils/*.so
+cuda_project/utils/*.a
+
+cuda_project/report/*.pdf
+cuda_project/report/*.aux
+cuda_project/report/*.log
