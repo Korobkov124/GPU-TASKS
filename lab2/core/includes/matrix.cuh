@@ -14,7 +14,6 @@ private:
 public:
     Matrix(std::size_t rows, std::size_t cols) : data_(std::make_shared<Data<T>>(rows * cols)), view_(data_->data(), rows, cols) {}
     Matrix(T* externalData, std::size_t rows, std::size_t cols) : data_(nullptr), view_(externalData, rows, cols) {}
-    //Matrix(const Matrix& other) : data_(other.data_), view_(other.view_.data(), other.rows(), other.cols()) {}
     Matrix(const Matrix& other) = default;
 
     Matrix& operator=(const Matrix& other) {

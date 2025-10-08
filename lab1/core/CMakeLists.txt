@@ -1,0 +1,21 @@
+cmake_minimum_required(VERSION 3.18)
+
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CUDA_STANDARD 17)
+
+find_package(CUDAToolkit REQUIRED)
+
+add_library(gpu_tasks SHARED
+    src/src1.cu
+)
+
+set(CUDA_ARCH ${arch})
+
+
+target_include_directories(gpu_tasks PUBLIC
+    "${CMAKE_CURRENT_SOURCE_DIR}/includes"
+    "${PROJECT_SOURCE_DIR}/utils/includes"
+)
+
+set_target_properties(gpu_tasks PROPERTIES CUDA_ARCHITECTURES "75")
