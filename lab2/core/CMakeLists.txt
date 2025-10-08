@@ -13,11 +13,11 @@ add_library(matrix::core ALIAS matrix_core)
 
 set_target_properties(123test PROPERTIES CUDA_ARCHITECTURES "75")
 
-
 target_include_directories(123test PRIVATE includes)
 
-
-target_link_libraries(123test PRIVATE cudart)
-
+target_link_libraries(123test PRIVATE 
+    cudart
+    cudadevrt
+)
 
 set(CMAKE_CUDA_STANDARD 17)
