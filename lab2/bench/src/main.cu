@@ -3,6 +3,7 @@
 #include <Eigen/Dense>
 #include "matrix.cuh"
 #include "matrixOperationsKernel.cuh"
+#include "matrixOperations.cuh"
 
 
 static void BM_Eigen_Matrix(benchmark::State& state){
@@ -37,11 +38,10 @@ static void BM_Cuda_Matrix(benchmark::State& state){
   
   for (auto _ : state)
     {
-      matrixMultiplyKernel<<<gridDim, blockDim>>>(A.view(), B.view(), C.view());
+      matrixMultiplyKernel<float><<<gridDim, blockDim>>>(A.view(), B.view(), C.view());
       benchmark::DoNotOptimize(C.data());
-      // benchmark::ClobberMemory();
+      benchmark::ClobberMemory();
     }
-
 }
 
 BENCHMARK(BM_Eigen_Matrix)
