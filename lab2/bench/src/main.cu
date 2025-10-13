@@ -4,6 +4,7 @@
 #include "matrix.cuh"
 #include "matrixOperationsKernel.cuh"
 #include "matrixOperations.cuh"
+#include "cuda_timer.hpp"
 
 
 static void BM_Eigen_Matrix(benchmark::State& state){
@@ -38,9 +39,16 @@ static void BM_Cuda_Matrix(benchmark::State& state){
   
   for (auto _ : state)
     {
-      matrixMultiplyKernel<float><<<gridDim, blockDim>>>(A.view(), B.view(), C.view());
-      benchmark::DoNotOptimize(C.data());
+      float elapsed_time = 0;
+
+      {
+        CUDATimer timer(elapsed_time);
+        matrixMultiplyKernel<float><<<gridDim, blockDim>>>(A.view(), B.view(), C.view());
+      }
+      benchmark::DoNotOptimize(elapsed_time);
       benchmark::ClobberMemory();
+
+      state.SetIterationTime(elapsed_time);
     }
 }
 

@@ -23,4 +23,4 @@ set_target_properties(bench PROPERTIES
     CUDA_ARCHITECTURES "75"
 )
 
-target_link_libraries(bench PRIVATE matrix_core benchmark Eigen3::Eigen)
+target_link_libraries(bench PRIVATE matrix_core benchmark cuda_timer Eigen3::Eigen)
