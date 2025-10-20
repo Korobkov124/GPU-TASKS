@@ -21,5 +21,6 @@ set_target_properties(test_matrix PROPERTIES
 
 enable_testing()
 
+find_package(Eigen3 REQUIRED)
 
-target_link_libraries(test_matrix PRIVATE matrix_core gtest_main Eigen3::Eigen)
+target_link_libraries(test_matrix PRIVATE matrix_core gtest_main ${EIGEN3_INCLUDE_DIR})
