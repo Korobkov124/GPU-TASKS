@@ -9,6 +9,7 @@ cuda_project/*/build/
 *.lib
 *.dll
 *.dylib
+*.vscode
 
 123test
 123test.cu
