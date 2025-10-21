@@ -8,34 +8,33 @@
 
 
 static void BM_Eigen_Matrix(benchmark::State& state){
-    int N = state.range(0);
+    int n_ = state.range(0);
 
-    Eigen::MatrixXf A = Eigen::MatrixXf::Random(N, N);
-    Eigen::MatrixXf B = Eigen::MatrixXf::Random(N, N);
-    Eigen::MatrixXf C(N, N);
+    Eigen::MatrixXf matrixA = Eigen::MatrixXf::Random(n_, n_);
+    Eigen::MatrixXf matrixB = Eigen::MatrixXf::Random(n_, n_);
+    Eigen::MatrixXf matrixC(n_, n_);
 
     for (auto _ : state)
     {
-      C = A * B;
-      benchmark::DoNotOptimize(C.data());
-      // benchmark::ClobberMemory();
+      matrixC = matrixA * matrixB;
+      benchmark::DoNotOptimize(matrixC.data());
     }
 }
 
 static void BM_Cuda_Matrix(benchmark::State& state){
-  int N = state.range(0);
+  int n_ = state.range(0);
 
-  Matrix<float> A(N, N);
-  Matrix<float> B(N, N);
-  Matrix<float> C(N, N);
+  Matrix<float> matrixA(n_, n_);
+  Matrix<float> matrixB(n_, n_);
+  Matrix<float> matrixC(n_, n_);
 
-  A.fill(25.0);
-  B.fill(25.0);
+  matrixA.fill(25.0);
+  matrixB.fill(25.0);
 
   constexpr std::size_t BLOCK_SIZE = 16;
   dim3 blockDim(BLOCK_SIZE, BLOCK_SIZE);
-  dim3 gridDim((N + BLOCK_SIZE - 1) / BLOCK_SIZE, 
-                 (N + BLOCK_SIZE - 1) / BLOCK_SIZE);
+  dim3 gridDim((n_ + BLOCK_SIZE - 1) / BLOCK_SIZE, 
+                 (n_ + BLOCK_SIZE - 1) / BLOCK_SIZE);
   
   for (auto _ : state)
     {
@@ -43,7 +42,7 @@ static void BM_Cuda_Matrix(benchmark::State& state){
 
       {
         CUDATimer timer(elapsed_time);
-        matrixMultiplyKernel<float><<<gridDim, blockDim>>>(A.view(), B.view(), C.view());
+        matrixMultiplyKernel<float><<<gridDim, blockDim>>>(matrixA.view(), matrixB.view(), matrixC.view());
       }
       benchmark::DoNotOptimize(elapsed_time);
       benchmark::ClobberMemory();
