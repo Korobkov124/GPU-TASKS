@@ -32,16 +32,8 @@ def parse_benchmarks(data):
 
     return eigen, cuda_naive, cuda_shared
 
-def plot_real_complexity(eigen, cuda_naive, cuda_shared):
+def plot_real_complexity(cuda_naive, cuda_shared):
     fig = go.Figure()
-
-    fig.add_trace(go.Scatter(
-        x=[n for n, _ in eigen],
-        y=[t for _, t in eigen],
-        mode='lines+markers',
-        name='Eigen Matrix (CPU)',
-        line=dict(color='blue')
-    ))
 
     fig.add_trace(go.Scatter(
         x=[n for n, _ in cuda_naive],
@@ -126,7 +118,7 @@ if __name__ == "__main__":
     data = read_file()
     eigen, cuda_naive, cuda_shared = parse_benchmarks(data)
 
-    plot_real_complexity(eigen, cuda_naive, cuda_shared)
+    plot_real_complexity(cuda_naive, cuda_shared)
 
     speedup = compute_speedup(cuda_naive, cuda_shared)
     plot_speedup(speedup)
