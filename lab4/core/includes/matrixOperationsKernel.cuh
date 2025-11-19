@@ -125,12 +125,10 @@ __global__ void matrixMultiplyKernelWMMA<__half>(MatrixView<__half> A, MatrixVie
     }
 
     for (size_t i = 0; i < A.cols(); i += wmma_k) {
-        if (i + wmma_k <= A.cols()) {
-            wmma::load_matrix_sync(a_frag, &A(warpM * wmma_m, i), A.cols());
-            wmma::load_matrix_sync(b_frag, &B(i, warpN * wmma_n), B.cols());
+        wmma::load_matrix_sync(a_frag, &A(warpM * wmma_m, i), A.cols());
+        wmma::load_matrix_sync(b_frag, &B(i, warpN * wmma_n), B.cols());
 
-            wmma::mma_sync(c_frag, a_frag, b_frag, c_frag);
-        }
+        wmma::mma_sync(c_frag, a_frag, b_frag, c_frag);
     }
 
     __shared__ float temp_result[wmma_m * wmma_n];

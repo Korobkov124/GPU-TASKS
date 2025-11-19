@@ -21,14 +21,5 @@ target_compile_options(matrix_core INTERFACE
     --expt-extended-lambda          
     -DCUDA_NO_HALF=1                
 )
-# __CUDA_ARCH__
+
 target_include_directories(matrix_core INTERFACE "${CMAKE_CURRENT_SOURCE_DIR}/includes")
-
-add_executable(123test 123test.cu)
-
-target_link_libraries(123test matrix::core)
-
-set_target_properties(123test PROPERTIES 
-    CUDA_ARCHITECTURES "75"
-    CUDA_RUNTIME_LIBRARY "Shared"
-)
