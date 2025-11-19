@@ -78,13 +78,13 @@ __global__ void matrixMultiplyKernelWMMA(MatrixView<T> A, MatrixView<T> B, Matri
     const size_t warpM = (blockIdx.y * blockDim.x + threadIdx.x) / warpSize;
     const size_t warpN = (blockIdx.y * blockDim.y + threadIdx.y);
 
+
     wmma::fragment<wmma::matrix_a, wmma_m, wmma_n, wmma_k, T, wmma::row_major> a_frag;
     wmma::fragment<wmma::matrix_b, wmma_m, wmma_n, wmma_k, T, wmma::col_major> b_frag;
     wmma::fragment<wmma::accumulator, wmma_m, wmma_n, wmma_k, T> c_frag;
 
     wmma::fill_fragment(c_frag, 0.0f);
 
-    
 
     if (warpM >= C.rows() / wmma_m || warpN >= C.cols() / wmma_n){
         return;
@@ -99,49 +99,5 @@ __global__ void matrixMultiplyKernelWMMA(MatrixView<T> A, MatrixView<T> B, Matri
         }
     }
 
-    wmma::store_matrix_sync(&C(warpM * wmma_m, warpN * wmma_n), c_frag, C.cols(), wmma::mem_col_major);
-}
-
-template<>
-__global__ void matrixMultiplyKernelWMMA<__half>(MatrixView<__half> A, MatrixView<__half> B, MatrixView<__half> C) {
-    using namespace nvcuda;
-    
-    constexpr size_t wmma_m = 16;
-    constexpr size_t wmma_n = 16;
-    constexpr size_t wmma_k = 16;
-    constexpr size_t warpSize = 32;
-
-    const size_t warpM = (blockIdx.y * blockDim.x + threadIdx.x) / warpSize;
-    const size_t warpN = (blockIdx.y * blockDim.y + threadIdx.y);
-
-    wmma::fragment<wmma::matrix_a, wmma_m, wmma_n, wmma_k, __half, wmma::col_major> a_frag;
-    wmma::fragment<wmma::matrix_b, wmma_m, wmma_n, wmma_k, __half, wmma::row_major> b_frag;
-    wmma::fragment<wmma::accumulator, wmma_m, wmma_n, wmma_k, float> c_frag;
-
-    wmma::fill_fragment(c_frag, 0.0f);
-
-    if (warpM >= C.rows() / wmma_m || warpN >= C.cols() / wmma_n){
-        return;
-    }
-
-    for (size_t i = 0; i < A.cols(); i += wmma_k) {
-        wmma::load_matrix_sync(a_frag, &A(warpM * wmma_m, i), A.cols());
-        wmma::load_matrix_sync(b_frag, &B(i, warpN * wmma_n), B.cols());
-
-        wmma::mma_sync(c_frag, a_frag, b_frag, c_frag);
-    }
-
-    __shared__ float temp_result[wmma_m * wmma_n];
-    wmma::store_matrix_sync(temp_result, c_frag, wmma_n, wmma::mem_col_major);
-    __syncthreads();
-
-    for (int i = threadIdx.y; i < wmma_m; i += blockDim.y) {
-        for (int j = threadIdx.x; j < wmma_n; j += blockDim.x) {
-            int row = warpM * wmma_m + i;
-            int col = warpN * wmma_n + j;
-            if (row < C.rows() && col < C.cols()) {
-                C(row, col) = __float2half(temp_result[i * wmma_n + j]);
-            }
-        }
-    }
+    wmma::store_matrix_sync(&C(warpM * wmma_m, warpN * wmma_n), c_frag, C.cols(), wmma::mem_row_major);
 }
