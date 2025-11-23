@@ -22,12 +22,8 @@ Matrix<T, Algorithm> Matrix<T, Algorithm>::operator*(const Matrix<T, OtherAlgori
     } else if constexpr (Algorithm == MultiplyAlgorithm::naive) {
         matrixMultiplyKernel<T><<<gridDim, blockDim>>>(view(), other.view(), result.view());
     } else if constexpr (Algorithm == MultiplyAlgorithm::wmma) {
-        size_t warpsX = (result.rows() + 15) / 16;
-        size_t warpsY = (result.cols() + 15) / 16;
-        dim3 wmmaBlock(128, 4);
-        size_t warpsPerBlockX = wmmaBlock.x / 32;
-        size_t warpsPerBlockY = wmmaBlock.y;
-        dim3 wmmaGrid((warpsX + (warpsPerBlockX - 1)) / warpsPerBlockX, (warpsY + warpsPerBlockY - 1) / warpsPerBlockY);
+        dim3 wmmaBlock(128);
+        dim3 wmmaGrid((other.cols() + 15) / 16, (rows() + 15) / 16);
         matrixMultiplyKernelWMMA<T><<<wmmaGrid, wmmaBlock>>>(view(), other.view(), result.view());
     }
 

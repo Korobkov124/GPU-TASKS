@@ -75,8 +75,15 @@ __global__ void matrixMultiplyKernelWMMA(MatrixView<T> A, MatrixView<T> B, Matri
     constexpr size_t wmma_k = type_id<T>();
     constexpr size_t warpSize = 32;
 
-    const size_t warpM = (blockIdx.y * blockDim.x + threadIdx.x) / warpSize;
-    const size_t warpN = (blockIdx.y * blockDim.y + threadIdx.y);
+    const size_t warp_id = threadIdx.x / warpSize;
+    
+    const size_t warpM = blockIdx.y * (blockDim.x / warpSize) + warp_id;
+    const size_t warpN = blockIdx.x;
+
+    if (warpM >= (C.rows() + wmma_m - 1) / wmma_m || 
+        warpN >= (C.cols() + wmma_n - 1) / wmma_n) {
+        return;
+    }
 
 
     wmma::fragment<wmma::matrix_a, wmma_m, wmma_n, wmma_k, T, wmma::row_major> a_frag;
@@ -100,4 +107,6 @@ __global__ void matrixMultiplyKernelWMMA(MatrixView<T> A, MatrixView<T> B, Matri
     }
 
     wmma::store_matrix_sync(&C(warpM * wmma_m, warpN * wmma_n), c_frag, C.cols(), wmma::mem_row_major);
+
+
 }
