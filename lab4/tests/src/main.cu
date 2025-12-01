@@ -8,13 +8,12 @@ std::vector<std::size_t> matrix_sizes = {16, 32, 64, 128, 256, 512};
 
 Matrix<__half, MultiplyAlgorithm::wmma> createAndFillWMMAMatrix(std::size_t rows, std::size_t cols, __half value){
     Matrix<__half, MultiplyAlgorithm::wmma> matrix(rows, cols);
-    matrix.fill(value);
+    // matrix.fill(value);
     return matrix;
 }
 
 Eigen::MatrixXf createAndFillEigenMatrix(std::size_t rows, std::size_t cols, __half value) {
-    Eigen::MatrixXf matrix(rows, cols);
-    matrix.setConstant(value);
+    Eigen::MatrixXf matrix = Eigen::MatrixXf::Random(rows, cols);
     return matrix;
 }
 
@@ -39,14 +38,16 @@ TEST_P(KernelParamTest, wmma_matrix_multiply_test){
     auto [m, n, k] = GetParam();
 
     Matrix<__half, MultiplyAlgorithm::wmma> matrixA = createAndFillWMMAMatrix(m, k, 2.0f);
-    Matrix<__half, MultiplyAlgorithm::wmma> matrixB = createAndFillWMMAMatrix(k, n, 4.0f);
-
-    Matrix<__half, MultiplyAlgorithm::wmma> matrixC = matrixA * matrixB;
+    Matrix<__half, MultiplyAlgorithm::wmma> matrixB = createAndFillWMMAMatrix(k, n, 4.0f); 
     
     Eigen::MatrixXf eigenA = createAndFillEigenMatrix(m, k, 2.0f);
     Eigen::MatrixXf eigenB = createAndFillEigenMatrix(k, n, 4.0f);
 
     Eigen::MatrixXf eigenC = eigenA * eigenB;
+
+    
+
+    Matrix<__half, MultiplyAlgorithm::wmma> matrixC = matrixA * matrixB;
 
     Eigen::MatrixXf to_compare_C = convertToEigenMatrix(matrixC);
     

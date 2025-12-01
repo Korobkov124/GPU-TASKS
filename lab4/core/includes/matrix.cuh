@@ -68,7 +68,7 @@ public:
 
     void fill(const T& value) {
         for (std::size_t i = 0; i < size(); i++) {
-            data()[i] = value;
+            data()[i] = i;
         }
     }
 
