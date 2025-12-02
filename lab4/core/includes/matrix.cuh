@@ -68,7 +68,7 @@ public:
 
     void fill(const T& value) {
         for (std::size_t i = 0; i < size(); i++) {
-            data()[i] = i;
+            data()[i] = value;
         }
     }
 
@@ -101,6 +101,10 @@ public:
         }
         return result;
     }
+
+    Data<T>& getData() { return *data_; }
+    
+    const Data<T>& getData() const { return *data_; }
 };
 
 std::ostream& operator<<(std::ostream& os, const __half& h) {

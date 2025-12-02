@@ -26,7 +26,7 @@ public:
     std::size_t size() const {return size_;}
 
     void copyToHost(T* hostPtr) const {
-        cudaMemcpy(hostPtr, &data_, size_ * sizeof(T), cudaMemcpyDeviceToHost);
+        cudaMemcpy(hostPtr, data_, size_ * sizeof(T), cudaMemcpyDeviceToHost);
 
         cudaError_t err = cudaGetLastError();
         if (err != cudaSuccess) {
@@ -35,7 +35,7 @@ public:
     }
 
     void copyFromHost(const T*hostPtr) const {
-        cudaMemcpy(&data_, hostPtr, size_ * sizeof(T), cudaMemcpyHostToDevice);
+        cudaMemcpy(data_, hostPtr, size_ * sizeof(T), cudaMemcpyHostToDevice);
 
         cudaError_t err = cudaGetLastError();
         if (err != cudaSuccess) {
