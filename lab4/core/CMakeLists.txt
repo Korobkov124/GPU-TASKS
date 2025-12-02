@@ -18,8 +18,7 @@ set_target_properties(matrix_core PROPERTIES CUDA_ARCHITECTURES "86")
 
 target_compile_options(matrix_core INTERFACE 
     --expt-relaxed-constexpr
-    --expt-extended-lambda          
-    -DCUDA_NO_HALF=1                
+    --expt-extended-lambda                        
 )
 
 target_include_directories(matrix_core INTERFACE "${CMAKE_CURRENT_SOURCE_DIR}/includes")
