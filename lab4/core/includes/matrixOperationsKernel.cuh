@@ -87,7 +87,7 @@ __global__ void matrixMultiplyKernelWMMA(MatrixView<T> A, MatrixView<T> B, Matri
 
 
     wmma::fragment<wmma::matrix_a, wmma_m, wmma_n, wmma_k, T, wmma::row_major> a_frag;
-    wmma::fragment<wmma::matrix_b, wmma_m, wmma_n, wmma_k, T, wmma::col_major> b_frag;
+    wmma::fragment<wmma::matrix_b, wmma_m, wmma_n, wmma_k, T, wmma::row_major> b_frag;
     wmma::fragment<wmma::accumulator, wmma_m, wmma_n, wmma_k, T> c_frag;
 
     wmma::fill_fragment(c_frag, 0.0f);

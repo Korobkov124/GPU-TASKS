@@ -101,6 +101,10 @@ public:
         }
         return result;
     }
+
+    Data<T>& getData() { return *data_; }
+    
+    const Data<T>& getData() const { return *data_; }
 };
 
 std::ostream& operator<<(std::ostream& os, const __half& h) {
