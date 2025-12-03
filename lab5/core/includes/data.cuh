@@ -2,6 +2,7 @@
 #include <memory>
 #include <cstddef>
 #include <cuda_runtime.h>
+#include <stdexcept>
 
 template<typename T>
 class Data {
@@ -21,6 +22,22 @@ public:
     Data(const Data&) = delete;
     Data& operator=(const Data&) = delete;
 
+    Data(Data&& other) noexcept : data_(other.data_), size_(other.size_) {
+        other.data_ = nullptr;
+        other.szie_ = 0;
+    }
+
+    Data& operator=(Data&& other) noexcept {
+        if (this != &other) {
+            if (data_) cudaFree(data_);
+            data_ = other.data_;
+            size_ = other.size_;
+            other.data_ = nullptr;
+            other.szie_ = 0;
+        }
+        return *this;
+    }
+
     T* data() {return data_;}
     const T* data() const {return data_;}
     std::size_t size() const {return size_;}
@@ -30,7 +47,7 @@ public:
 
         cudaError_t err = cudaGetLastError();
         if (err != cudaSuccess) {
-            throw std::runtime_error("CUDA error: " + std::string(cudaGetErrorString(err)));
+            throw std::runtime_error("CUDA error to host: " + std::string(cudaGetErrorString(err)));
         }
     }
 
@@ -39,7 +56,7 @@ public:
 
         cudaError_t err = cudaGetLastError();
         if (err != cudaSuccess) {
-            throw std::runtime_error("CUDA error: " + std::string(cudaGetErrorString(err)));
+            throw std::runtime_error("CUDA error from host: " + std::string(cudaGetErrorString(err)));
         }
     }
 };
