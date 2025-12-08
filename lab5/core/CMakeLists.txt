@@ -22,17 +22,3 @@ target_compile_options(vector_core INTERFACE
 )
 
 target_include_directories(vector_core INTERFACE "${CMAKE_CURRENT_SOURCE_DIR}/includes")
-
-add_executable(123test 123test.cu)
-
-# Устанавливаем архитектуру для исполняемого файла
-set_target_properties(123test PROPERTIES CUDA_ARCHITECTURES "86")
-
-# Настраиваем опции компиляции для исполняемого файла
-target_compile_options(123test PRIVATE
-    --expt-relaxed-constexpr
-    --expt-extended-lambda
-)
-
-# Если исполняемый файл использует вашу библиотеку
-target_link_libraries(123test PRIVATE vector::core)

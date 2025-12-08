@@ -4,3 +4,4 @@ project(lab4 LANGUAGES CXX CUDA)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 add_subdirectory(core)
+add_subdirectory(tests)
