@@ -12,7 +12,7 @@ using T = float;
 
 static void addVectorRanges(benchmark::internal::Benchmark* b) {
     int64_t start = 8LL;
-    int64_t end   = (int64_t(8) << 28);
+    int64_t end   = (int64_t(8) << 24);
     b->RangeMultiplier(2)->Range(start, end)->Unit(benchmark::kMillisecond)->UseManualTime();
 }
 
