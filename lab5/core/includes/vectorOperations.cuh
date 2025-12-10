@@ -9,7 +9,6 @@ T Vector<T, Algorithm>::sum() const {
     if (n == 0) return static_cast<T>(0);
 
     constexpr std::size_t block_size = 256;
-    //
 
     std::size_t nBlocks = (((n + block_size - 1) / block_size) < 128) ? ((n + block_size - 1) / block_size) : 128;
     
@@ -42,12 +41,9 @@ T Vector<T, Algorithm>::sum() const {
         throw std::runtime_error("CUDA error 2: " + std::string(cudaGetErrorString(err2)));
     }
 
-
     T final;
     result.copyToHost(&final);
 
     cudaDeviceSynchronize();
     return final;
 }
-
-
